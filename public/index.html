@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" sizes="16x16" href="../plugins/images/favicon.png">
+    <title>DPDHL</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Menu CSS -->
+    <link href="css/sidebar-nav.min.css" rel="stylesheet">
+    <!-- toast CSS -->
+    <link href="css/jquery.toast.css" rel="stylesheet">
+    <!-- morris CSS -->
+    <link href="css/morris.css" rel="stylesheet">
+    <!-- chartist CSS -->
+    <link href="css/chartist.min.css" rel="stylesheet">
+    <link href="css/chartist-plugin-tooltip.css" rel="stylesheet">
+    <!-- animation CSS -->
+    <link href="css/animate.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/style1.css" rel="stylesheet">
+    <!-- color CSS -->
+    <link href="css/colors/default.css" id="theme" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+
+
+<link href="assets/css/style.css" rel="stylesheet">
+
+<body class="fix-header">
+    <header>
+        <nav class="navbar navbar-default navbar-fixed-top header_cus">
+            <div class="ii">
+                <div class="navbar-header logo_cus">
+                    <a class="navbar-brand" href="#"><img src="assets/images/logo.png" /></a>
+                </div>
+                <div id="navbar2" class="navbar-collapse main_nav_cus">
+                    <div class="blk_mas">
+                        <div class="flt_right">
+                            <div class="searchMas">
+                                <input type="text" value="Search" class="searchBox dis_none" id="searchBox" /><img
+                                    src="assets/images/search.png" id="searchIcon" />
+                            </div>
+                            <ul class="nav blk_strip navbar-nav ">
+                                <li>
+                                    <div class="cp_name">IoT Platform</div>
+                                </li>
+                            </ul>
+                            <ul class="nav blk_strip navbar-nav  ">
+                                <li class="dropdown signin">
+                                    <a href="/login">Sign in <span class="caret" style="display: none;"></span></a>
+                                    <div class="dropdown-menu initial">
+                                        <a href="#" class="setting_lnk">DHLTheme</a>
+                                        <a href="#" class="setting_lnk">Contact DHL</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="navbar" class="navbar-collapse collapse main_nav_cus">
+                    </div>
+                    <!--/.nav-collapse -->
+                </div>
+                <div id="navbar" class="navbar-collapse collapse main_nav_cus" style="display: none !important;">
+                    <ul class="nav navbar-nav main_nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                aria-haspopup="true" aria-expanded="false">Home <span class="caret"></span></a>
+                            <ul class="dropdown-menu inner_menu">
+                                <li><a [routerLink]="['/home/what-is-iot']">What is IoT?</a></li>
+                                <li>
+                                    <a [routerLink]="['/home/dpdhl-and-iot']">DPDHL and IoT</a>
+                                </li>
+                                <li><a [routerLink]="['/home/how-it-works']">How it works</a></li>
+                                <li>
+                                    <a [routerLink]="['/home/benefits']">Benefits of IoT Platform</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                aria-haspopup="true" aria-expanded="false">Applications <span class="caret"></span></a>
+                            <ul class="dropdown-menu inner_menu">
+                                <li><a href="#">Track and Trace</a></li>
+                                <li><a href="#">Smart Energy</a></li>
+                                <li><a href="#">Asset Monitoring</a></li>
+                                <li><a href="#">Predictive Maintenance</a></li>
+                                <li><a href="#">Customer Satisfaction</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                aria-haspopup="true" aria-expanded="false">Services <span class="caret"></span></a>
+                            <ul class="dropdown-menu inner_menu">
+                                <li><a href="#">Data Management</a></li>
+                                <li><a href="#">Device Management</a></li>
+                                <li><a href="#">Security</a></li>
+                                <li><a href="#">Event Management</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                aria-haspopup="true" aria-expanded="false">Learn More <span class="caret"></span></a>
+                            <ul class="dropdown-menu inner_menu">
+                                <li><a href="#">FAQs</a></li>
+                                <li><a href="#">Documentation</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                aria-haspopup="true" aria-expanded="false">Contact <span class="caret"></span></a>
+                            <ul class="dropdown-menu inner_menu">
+                                <li><a href="#">About Us</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!--/.nav-collapse -->
+            </div>
+        </nav>
+    </header>
+    <div id="wrapper">
+        <div class="home-landing">
+            <section class="carousel_sec">
+                <div id="carousel-example" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators left_reset">
+                        <li data-target="#carousel-example" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example" data-slide-to="1"></li>
+                        <li data-target="#carousel-example" data-slide-to="2"></li>
+                    </ol>
+
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <a href="#"><img src="assets/images/banner1.png" /></a>
+                            <div class="carousel-caption">
+                                <!-- <h3>DHL</h3>
+                  <p>DHL Content</p> -->
+                            </div>
+                        </div>
+                        <div class="item">
+                            <a href="#"><img src="assets/images/banner2.png" /></a>
+                            <div class="carousel-caption">
+                                <!-- <h3>DHL</h3>
+                  <p>DHL Content</p> -->
+                            </div>
+                        </div>
+                        <div class="item">
+                            <a href="#"><img src="assets/images/banner3.png" /></a>
+                            <div class="carousel-caption">
+                                <!-- <h3>DHL</h3>
+                  <p>DHL Content</p> -->
+                            </div>
+                        </div>
+                    </div>
+                    <section class="on_banner_sec col-md-11 col-sm-12 col-xs-12">
+                        <div class="white_stripMas col-md-7 col-sm-12 col-xs-12 col-md-push-5">
+                            <ul>
+                                <li>
+                                    <a data-toggle="tab" href="#FasterBuild">Data Management</a>
+                                </li>
+                                <li>
+                                    <a data-toggle="tab" href="#LowerBuildCost">Device Management</a>
+                                </li>
+                                <li><a data-toggle="tab" href="#DeviceandTech">Security</a></li>
+                                <li>
+                                    <a data-toggle="tab" href="#LowerIntegration">Event Management</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="cont_blk col-md-11 col-sm-12 col-xs-12 tab-content">
+                            <div id="FasterBuild" class="tab-pane fade in active">
+                                <h1>DATA</h1>
+                                <h3>Management</h3>
+                                <ul class="innerList2a">
+                                    <li>
+                                        Data management acts as a layer between the objects and devices
+                                        generating the data <br />and the applications accessing the
+                                        data for<br />
+                                        analysis purposes and services.
+                                    </li>
+                                </ul>
+                            </div>
+                            <div id="LowerBuildCost" class="tab-pane fade">
+                                <h1>Device</h1>
+                                <h3>Management</h3>
+                                <ul class="innerList2a">
+                                    <li>
+                                        Device Management makes it easy to securely onboard, organize,
+                                        monitor, and remotely <br />manage IoT devices at scale.
+                                        Register your connected devices individually or in bulk, and
+                                        easily <br />manage permissions so that devices remain secure.
+                                    </li>
+                                </ul>
+                            </div>
+                            <div id="DeviceandTech" class="tab-pane fade">
+                                <h1>Security</h1>
+                                <ul class="innerList2a">
+                                    <li>
+                                        IoT Security safeguards the connected devices and networks in
+                                        the internet of things (IoT).
+                                    </li>
+                                </ul>
+                            </div>
+                            <div id="LowerIntegration" class="tab-pane fade">
+                                <h1>Event</h1>
+                                <h3>Management</h3>
+                                <ul class="innerList2a">
+                                    <li>
+                                        Event management is the process of creating an alarm and notify
+                                        the user with ceratain <br />information on occurrence of an
+                                        event.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="ms_iot_img"></div>
+                        </div>
+                    </section>
+                </div>
+            </section>
+
+            <section class="btm_banner_sec2">
+                <div class="main_container">
+                    <div class="main_Service_mas col-md-12 col-sm-12 col-xs-12">
+                        <ul class="main_Service">
+                            <li>
+                                <div class="ms_content_mas">
+                                    <div class="ms_icon_lft">
+                                        <img src="assets/images/data_icon.png" />
+                                    </div>
+                                    <div class="ms_content">
+                                        <div class="ms_title_blk">
+                                            <h3 class="yellow_color">Faster</h3>
+                                            <h4>Build</h4>
+                                        </div>
+                                        <ul class="innerList">
+                                            <li>
+                                                Readily available device database to suit specific needs
+                                            </li>
+                                            <li>Portfolio of screened implementation vendors</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="ms_content_mas">
+                                    <div class="ms_icon_lft">
+                                        <img src="assets/images/device_mgt.png" />
+                                    </div>
+                                    <div class="ms_content">
+                                        <div class="ms_title_blk">
+                                            <h3 class="yellow_color">Lower</h3>
+                                            <h4>Build Cost</h4>
+                                        </div>
+                                        <ul class="innerList">
+                                            <li>
+                                                Access to frame contracts including corporate discounts on
+                                                Azure
+                                            </li>
+                                            <li>Access to reusable platform components</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="ms_content_mas">
+                                    <div class="ms_icon_lft">
+                                        <img src="assets/images/user_mgt.png" />
+                                    </div>
+                                    <div class="ms_content">
+                                        <div class="ms_title_blk">
+                                            <h3 class="yellow_color">Device & Tech</h3>
+                                            <h4>neutral</h4>
+                                        </div>
+                                        <ul class="innerList">
+                                            <li>Agnostic to telco technologies like NB-IoT, LTE etc.</li>
+                                            <li>
+                                                Flexibility to onboard and manage devices of multiple
+                                                vendors
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="ms_content_mas">
+                                    <div class="ms_icon_lft">
+                                        <img src="assets/images/app_mgt.png" />
+                                    </div>
+                                    <div class="ms_content">
+                                        <div class="ms_title_blk">
+                                            <h3 class="yellow_color">Integration</h3>
+                                            <h4>Cost</h4>
+                                        </div>
+                                        <ul class="innerList">
+                                            <li>Access to reusable platform components</li>
+                                            <li>
+                                                Pre-defined connection to Datalake and other DPDHL systems
+                                            </li>
+                                        </ul>
+                                        <br />
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <section class="btm_banner_sec3">
+                <div class="btm_banner_sec3_headMas">
+                    <div class="col-md-10 col-sm-8 col-xs-12 col-md-push-1 col-sm-push-2">
+                        <h2 class="col-md-4 col-sm-12 col-xs-12 col-md-push-4">
+                            Other Services
+                        </h2>
+
+                        <ul class="othr_services col-md-10 col-sm-12 col-xs-12 col-md-push-1">
+                            <li>
+                                <div class="analytics_bg">
+                                    <img src="assets/images/data_analytics.png" />
+                                </div>
+                                <br />DATA ANALYTICS
+                            </li>
+
+                            <li>
+                                <div class="logging_bg">
+                                    <img src="assets/images/logging.png" />
+                                </div>
+                                <br />Notifications
+                            </li>
+                            <li>
+                                <div class="reporting_bg">
+                                    <img src="assets/images/reporting.png" />
+                                </div>
+                                <br />LOGGING
+                            </li>
+                            <li>
+                                <div class="alerts_bg">
+                                    <img src="assets/images/alerts_events.png" />
+                                </div>
+                                <br />REPORTING
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <section class="btm_banner_sec4 footer-section">
+        <div class="footerMas">
+            <div class="col-md-10 col-sm-8 col-xs-12 col-md-push-1 col-sm-push-2">
+                <ul class="footer_menu" style="display: none;">
+                    <li>Home</li>
+                    <li>About Us</li>
+                    <li>All Solutions</li>
+                    <li>Our Divisions</li>
+                    <li>Industry Sectors</li>
+                    <li>Insights & Innovation</li>
+                    <li>Contact us</li>
+                </ul>
+                <div class="copyRgt">
+                    &copy; 2019, DPDHL. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+
+<script src="js/jquery.min.js"></script>
+
+<script src="js/popper.min.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- Menu Plugin JavaScript -->
+<script src="js/sidebar-nav.min.js"></script>
+<!--slimscroll JavaScript -->
+<script src="js/jquery.slimscroll.js"></script>
+<!--Wave Effects -->
+<script src="js/waves.js"></script>
+<!--Counter js -->
+<script src="js/jquery.waypoints.js"></script>
+<script src="js/jquery.counterup.min.js"></script>
+<!-- chartist chart -->
+<script src="js/chartist.min.js"></script>
+<script src="js/chartist-plugin-tooltip.min.js"></script>
+<!-- Sparkline chart JavaScript -->
+<script src="js/jquery.sparkline.min.js"></script>
+<!-- Custom Theme JavaScript -->
+<script src="js/custom.min.js"></script>
+<script src="js/dashboard1.js"></script>
+<script src="js/jquery.toast.js"></script>
+<script src="js/datajs/jquery.slimscroll.min.js"></script>
+<script src="js/datajs/script.js"></script>
+
+
+<script>
+
+    $(function () {
+        $('[data-toggle="popover"]').popover()
+    })
+
+
+</script>
+
+</html>

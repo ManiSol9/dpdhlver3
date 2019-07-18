@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" sizes="16x16" href="../plugins/images/favicon.png">
+    <title>DPDHL</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Menu CSS -->
+    <link href="css/sidebar-nav.min.css" rel="stylesheet">
+    <!-- toast CSS -->
+    <link href="css/jquery.toast.css" rel="stylesheet">
+    <!-- morris CSS -->
+    <link href="css/morris.css" rel="stylesheet">
+    <!-- chartist CSS -->
+    <link href="css/chartist.min.css" rel="stylesheet">
+    <link href="css/chartist-plugin-tooltip.css" rel="stylesheet">
+    <!-- animation CSS -->
+    <link href="css/animate.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/style1.css" rel="stylesheet">
+    <!-- color CSS -->
+    <link href="css/colors/default.css" id="theme" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+
+<body class="fix-header">
+
+    <div id="wrapper">
+
+        <nav class="navbar navbar-default navbar-static-top m-b-0">
+            <div class="navbar-header">
+                <div class="top-left-part">
+                    <!-- Logo -->
+                    <a class="logo" href="dashboard.html">
+                        <b>
+                            <!--This is dark logo icon--><img src="images/dhl_logo.png" alt="home" class="dark-logo" />
+                            <!--This is light logo icon--><img src="images/dhl_logo.png" alt="home" class="light-logo" />
+                        </b>
+                    </a>
+                </div>
+                <ul class="nav navbar-top-links navbar-right pull-right">
+                    <li>
+                        <a class="profile-pic dropdown-toggle" data-toggle="dropdown"> <img src="images/mani.jpg" alt="user-img"
+                                width="36" class="img-circle">
+        
+                            <b class="hidden-xs"> 
+                                    Admin <span class="caret"></span>
+                            </b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/profile.html">Profile</a></li>
+                            <li><a href="/logout">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav slimscrollsidebar">
+                <div class="sidebar-head">
+                </div>
+                <ul class="nav" id="side-menu">
+                    <li style="padding: 70px 0 0;">
+                        <a href="dashboard.html" class="waves-effect"><i class="fa fa-clock-o fa-fw"
+                                aria-hidden="true"></i>Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="association.html" class="waves-effect"><i class="fa fa-sitemap fa-fw"
+                                aria-hidden="true"></i>Association</a>
+                    </li>
+                    <li>
+                        <a href="bu.html" class="waves-effect"><i class="fa fa-group fa-fw"
+                                aria-hidden="true"></i>Business
+                            Unit</a>
+                    </li>
+                    <li>
+                        <a href="app.html" class="waves-effect"><i class="fa fa-desktop fa-fw"
+                                aria-hidden="true"></i>Applications</a>
+                    </li>
+                    <li>
+                        <a href="devices.html" class="waves-effect"><i class="fa fa-print fa-fw" aria-hidden="true"></i>Devices</a>
+                    </li>
+                    <li>
+                        <a href="users.html" class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"></i>Users</a>
+                    </li>
+                    <li>
+                        <a href="facilities.html" class="waves-effect"><i class="fa fa-home fa-fw"
+                                aria-hidden="true"></i>Facilities</a>
+                    </li>
+                    <li>
+                        <a href="assets.html" class="waves-effect"><i class="fa fa-globe fa-fw" aria-hidden="true"></i>Assets</a>
+                    </li>
+                    <li>
+                        <a href="shipments.html" class="waves-effect"><i class="fa fa-home fa-fw"
+                                aria-hidden="true"></i>Shipments</a>
+                    </li>
+                    <li>
+                        <a href="others.html" class="waves-effect"><i class="fa fa-home fa-fw"
+                                aria-hidden="true"></i>Others</a>
+                    </li>
+        
+                    <li>
+                        <a href="reports.html" class="waves-effect"><i class="fa fa-signal fa-fw" aria-hidden="true"></i>Reports</a>
+                    </li>
+                    <li>
+                        <a href="logs.html" class="waves-effect"><i class="fa fa-sliders fa-fw" aria-hidden="true"></i>Logs</a>
+                    </li>
+                </ul>
+            </div>
+        
+        </div>
+
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <div class="row bg-title">
+                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                        <h4 class="page-title">Facilities</h4>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-lg-12 col-sm-12">
+                        <div class="white-box">
+                            <div class="table-responsive">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.container-fluid -->
+            <footer class="footer text-center"> 2019 &copy; DPDHL iot.dhl.com </footer>
+        </div>
+    </div>
+
+</body>
+
+<script src="js/jquery.min.js"></script>
+
+<script src="js/popper.min.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- Menu Plugin JavaScript -->
+<script src="js/sidebar-nav.min.js"></script>
+<!--slimscroll JavaScript -->
+<script src="js/jquery.slimscroll.js"></script>
+<!--Wave Effects -->
+<script src="js/waves.js"></script>
+<!--Counter js -->
+<script src="js/jquery.waypoints.js"></script>
+<script src="js/jquery.counterup.min.js"></script>
+<!-- chartist chart -->
+<script src="js/chartist.min.js"></script>
+<script src="js/chartist-plugin-tooltip.min.js"></script>
+<!-- Sparkline chart JavaScript -->
+<script src="js/jquery.sparkline.min.js"></script>
+<!-- Custom Theme JavaScript -->
+<script src="js/custom.min.js"></script>
+<script src="js/dashboard1.js"></script>
+<script src="js/jquery.toast.js"></script>
+<script src="js/datajs/jquery.slimscroll.min.js"></script>
+<script src="js/datajs/script.js"></script>
+
+
+<script>
+
+    $(function () {
+        $('[data-toggle="popover"]').popover()
+    })
+
+
+</script>
+
+<script src="js/datajs/drag_drop.js"></script>
+
+</html>

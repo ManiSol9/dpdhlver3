@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" sizes="16x16" href="../plugins/images/favicon.png">
+    <title>DPDHL</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Menu CSS -->
+    <link href="css/sidebar-nav.min.css" rel="stylesheet">
+    <!-- toast CSS -->
+    <link href="css/jquery.toast.css" rel="stylesheet">
+    <!-- morris CSS -->
+    <link href="css/morris.css" rel="stylesheet">
+    <!-- chartist CSS -->
+    <link href="css/chartist.min.css" rel="stylesheet">
+    <link href="css/chartist-plugin-tooltip.css" rel="stylesheet">
+    <!-- animation CSS -->
+    <link href="css/animate.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/style1.css" rel="stylesheet">
+    <!-- color CSS -->
+    <link href="css/colors/default.css" id="theme" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<style>
+    .loading {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        height: 250px;
+        justify-content: center;
+    }
+
+    .loading i {
+        font-size: 40px;
+        color: #ffcc00;
+    }
+
+    .title {
+        font-size: 16px;
+        border-bottom: 1px solid #eee;
+        height: 40px;
+        position: relative;
+        padding-top: 10px;
+    }
+
+    .content {
+        margin: 15px 0;
+        min-height: 100px;
+        clear: both;
+        border-bottom: 1px solid whitesmoke;
+    }
+
+    .user-icon {
+        position: relative;
+        margin-right: 20px;
+        margin-top: 3px;
+        float: left;
+        font-size: 45px;
+        color: #fecb07;
+    }
+
+    .user-details {
+        width: calc(100% - 50px);
+        padding-top: 10px;
+        float: left;
+    }
+
+    .user-details-name {
+        font-size: 15px;
+        color: #d40511;
+        font-weight: 500;
+    }
+
+    .user-details-text {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 12px;
+        padding: 2px;
+    }
+</style>
+
+<body class="fix-header">
+    <div id="wrapper">
+
+      <nav class="navbar navbar-default navbar-static-top m-b-0">
+        <div class="navbar-header">
+            <div class="top-left-part">
+                <!-- Logo -->
+                <a class="logo" href="dashboard.html">
+                    <b>
+                        <!--This is dark logo icon--><img src="images/dhl_logo.png" alt="home" class="dark-logo" />
+                        <!--This is light logo icon--><img src="images/dhl_logo.png" alt="home" class="light-logo" />
+                    </b>
+                </a>
+            </div>
+            <ul class="nav navbar-top-links navbar-right pull-right">
+                <li>
+                    <a class="profile-pic dropdown-toggle" data-toggle="dropdown"> <img src="images/mani.jpg" alt="user-img"
+                            width="36" class="img-circle">
+    
+                        <b class="hidden-xs"> 
+                                Admin <span class="caret"></span>
+                        </b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/profile.html">Profile</a></li>
+                        <li><a href="/logout">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="navbar-default sidebar" role="navigation">
+        <div class="sidebar-nav slimscrollsidebar">
+            <div class="sidebar-head">
+            </div>
+            <ul class="nav" id="side-menu">
+                <li style="padding: 70px 0 0;">
+                    <a href="dashboard.html" class="waves-effect"><i class="fa fa-clock-o fa-fw"
+                            aria-hidden="true"></i>Dashboard</a>
+                </li>
+                <li>
+                    <a href="association.html" class="waves-effect"><i class="fa fa-sitemap fa-fw"
+                            aria-hidden="true"></i>Association</a>
+                </li>
+                <li>
+                    <a href="bu.html" class="waves-effect"><i class="fa fa-group fa-fw"
+                            aria-hidden="true"></i>Business
+                        Unit</a>
+                </li>
+                <li>
+                    <a href="app.html" class="waves-effect"><i class="fa fa-desktop fa-fw"
+                            aria-hidden="true"></i>Applications</a>
+                </li>
+                <li>
+                    <a href="devices.html" class="waves-effect"><i class="fa fa-print fa-fw" aria-hidden="true"></i>Devices</a>
+                </li>
+                <li>
+                    <a href="users.html" class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"></i>Users</a>
+                </li>
+                <li>
+                    <a href="facilities.html" class="waves-effect"><i class="fa fa-home fa-fw"
+                            aria-hidden="true"></i>Facilities</a>
+                </li>
+                <li>
+                    <a href="assets.html" class="waves-effect"><i class="fa fa-globe fa-fw" aria-hidden="true"></i>Assets</a>
+                </li>
+                <li>
+                    <a href="shipments.html" class="waves-effect"><i class="fa fa-home fa-fw"
+                            aria-hidden="true"></i>Shipments</a>
+                </li>
+                <li>
+                    <a href="others.html" class="waves-effect"><i class="fa fa-home fa-fw"
+                            aria-hidden="true"></i>Others</a>
+                </li>
+    
+                <li>
+                    <a href="reports.html" class="waves-effect"><i class="fa fa-signal fa-fw" aria-hidden="true"></i>Reports</a>
+                </li>
+                <li>
+                    <a href="logs.html" class="waves-effect"><i class="fa fa-sliders fa-fw" aria-hidden="true"></i>Logs</a>
+                </li>
+            </ul>
+        </div>
+    
+    </div>
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <div class="row bg-title">
+                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                        <h4 class="page-title">Dashboard</h4>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- /.row -->
+                <!-- ============================================================== -->
+                <!-- Different data widgets -->
+                <!-- ============================================================== -->
+                <!-- .row -->
+                <div class="row">
+                    <div class="col-lg-3 col-sm-6 col-xs-12">
+                        <div class="white-box analytics-info">
+                            <h3 class="box-title">Business Units</h3>
+                            <ul class="list-inline two-part">
+                                <li>
+                                    <div class="icon-tile">
+                                        <i class="fa fa-group"></i>
+                                    </div>
+                                </li>
+                                <li class="text-right"><i class="ti-arrow-up text-success"></i> <span
+                                        class="counter text-success" id="text1"><i class="fa fa-spin fa-cog"></i></span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 col-xs-12">
+                        <div class="white-box analytics-info">
+                            <h3 class="box-title">Applications</h3>
+                            <ul class="list-inline two-part">
+                                <li>
+                                    <div class="icon-tile">
+                                        <i class="fa fa-desktop"></i>
+                                    </div>
+                                </li>
+                                <li class="text-right"><i class="ti-arrow-up text-purple"></i> <span
+                                        class="counter text-purple" id="text2"><i class="fa fa-spin fa-cog"></i></span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 col-xs-12">
+                        <div class="white-box analytics-info">
+                            <h3 class="box-title">Users</h3>
+                            <ul class="list-inline two-part">
+                                <li>
+                                    <div class="icon-tile">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                </li>
+                                <li class="text-right"><i class="ti-arrow-up text-info"></i>
+                                    <span class="counter text-info" id="text3">
+                                        <i class="fa fa-spin fa-cog"></i>
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-sm-6 col-xs-12">
+                        <div class="white-box analytics-info">
+                            <h3 class="box-title">Devices</h3>
+                            <ul class="list-inline two-part">
+                                <li>
+                                    <div class="icon-tile">
+                                        <i class="fa fa-print"></i>
+                                    </div>
+                                </li>
+                                <li class="text-right"><i class="ti-arrow-up text-info"></i>
+                                    <span class="counter text-info" style="color: #f98d41;" id="text4">
+                                        <i class="fa fa-spin fa-cog"></i>
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- chat-listing & recent comments -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <!-- .col -->
+                    <div class="col-md-12 col-lg-8 col-sm-12">
+                        <div class="white-box analytics-info">
+                            <div class="select_right" style="    display: flex;
+                            padding: 10px;">
+                                <h3 class="box-title" style="width: 300px;
+                                float: left;">Onboarding data from last 7 days</h3>
+                                <select id="changegraph" style="    float: right;
+                                margin-bottom: 5px;
+                                margin-left: 36%;">
+                                    <option value="A"> Business Units </option>
+                                    <option value="B"> Applications </option>
+                                </select>
+                            </div>
+
+                            <div id="chartContainer" style="height: 300px; width: 100%;">
+
+                                <div class="loading">
+                                    <i class="fa fa-spin fa-cog"></i>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="white-box analytics-info">
+                            <div class="application-owner">
+                                <div class="title box-title">
+                                      Alerts
+                                    <span style="float:right"><i class="fa fa-bell-o"></i></span>
+                                </div>
+                                <div id="alertdemo">
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- /.col -->
+                </div>
+            </div>
+            <!-- /.container-fluid -->
+            <footer class="footer text-center"> 2019 &copy; DPDHL iot.dhl.com </footer>
+        </div>
+    </div>
+
+</body>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+<script>
+    window.onload = function () {
+
+
+
+        requestCount();
+
+        function requestCount() {
+            var settings = {
+                "async": true,
+                "crossDomain": true,
+                "url": "https://dive11.azurewebsites.net/api/beta/dashboard/getCounts",
+                "method": "GET",
+                "headers": {
+                    "x-api-key": "q4jdp6swt4015amrj0681s0xs5r4opotc4f5sfv3",
+                }
+            }
+
+            $.ajax(settings).done(function (response) {
+                console.log(response);
+
+                if (response.status == 200) {
+
+                    data = response.result
+
+                    document.getElementById("text1").innerHTML = data.buCount
+                    document.getElementById("text2").innerHTML = data.appCount
+                    document.getElementById("text3").innerHTML = data.usersCount
+                    document.getElementById("text4").innerHTML = data.devicesCount
+
+
+                }
+
+            });
+        }
+
+        buCount("A")
+
+        function buCount() {
+            document.getElementById("chartContainer").innerHTML = '<div class="loading"><i class="fa fa-spin fa-cog"></i></div>';
+
+            var type = document.getElementById("changegraph").value
+
+            let url = null
+
+            if (type == "A") {
+
+                url = "https://dive11.azurewebsites.net/api/beta/businessunits/getWeekBuCounts"
+
+            } else {
+
+                url = "https://dive11.azurewebsites.net/api/beta/applications/getWeekAppCounts"
+            }
+
+            var today = new Date();
+
+            var date2 = today.getFullYear() + ', ' + (today.getMonth() + 1) + ', ' + (today.getDate() - 1);
+            var date3 = today.getFullYear() + ', ' + (today.getMonth() + 1) + ', ' + (today.getDate() - 2);
+            var date4 = today.getFullYear() + ', ' + (today.getMonth() + 1) + ', ' + (today.getDate() - 3);
+            var date5 = today.getFullYear() + ', ' + (today.getMonth() + 1) + ', ' + (today.getDate() - 4);
+            var date6 = today.getFullYear() + ', ' + (today.getMonth() + 1) + ', ' + (today.getDate() - 5);
+            var date7 = today.getFullYear() + ', ' + (today.getMonth() + 1) + ', ' + (today.getDate() - 6);
+            var date1 = today.getFullYear() + ', ' + (today.getMonth() + 1) + ', ' + today.getDate();
+
+            var settings = {
+                "async": true,
+                "crossDomain": true,
+                "url": url,
+                "method": "GET"
+            }
+
+            $.ajax(settings).done(function (response) {
+
+                data = response.result[0].counts
+
+                console.log(data)
+
+
+                var chart = new CanvasJS.Chart("chartContainer", {
+                    animationEnabled: true,
+                    axisX: {
+                        valueFormatString: "DD MMM",
+                        title: "Days",
+                    },
+                    axisY: {
+                        title: "Number of Entities On boarded",
+                        includeZero: false
+                    },
+                    data: [{
+                        type: "line",
+                        xValueFormatString: "DD MMM",
+                        color: "#F08080",
+                        dataPoints: [
+                            { x: new Date(date1), y: data.today },
+                            { x: new Date(date2), y: data.two },
+                            { x: new Date(date3), y: data.three },
+                            { x: new Date(date4), y: data.four },
+                            { x: new Date(date5), y: data.five },
+                            { x: new Date(date6), y: data.six },
+                            { x: new Date(date7), y: data.seven }
+                        ]
+                    }]
+                });
+
+
+                chart.render();
+
+
+            });
+        }
+
+
+        $('#changegraph').on('change', function (e) {
+
+            document.getElementById("chartContainer").innerHTML = '<div class="loading"><i class="fa fa-spin fa-cog"></i></div>';
+
+            var type = document.getElementById("changegraph").value
+
+            let url = null
+            let name = "Business Units"
+
+            if (type == "A") {
+
+                url = "https://dive11.azurewebsites.net/api/beta/businessunits/getWeekBuCounts"
+                name = "Business Units"
+
+            } else {
+
+                url = "https://dive11.azurewebsites.net/api/beta/applications/getWeekAppCounts"
+                name = "Applications"
+            }
+
+            var today = new Date();
+
+            var date2 = today.getFullYear() + ', ' + (today.getMonth() + 1) + ', ' + (today.getDate() - 1);
+            var date3 = today.getFullYear() + ', ' + (today.getMonth() + 1) + ', ' + (today.getDate() - 2);
+            var date4 = today.getFullYear() + ', ' + (today.getMonth() + 1) + ', ' + (today.getDate() - 3);
+            var date5 = today.getFullYear() + ', ' + (today.getMonth() + 1) + ', ' + (today.getDate() - 4);
+            var date6 = today.getFullYear() + ', ' + (today.getMonth() + 1) + ', ' + (today.getDate() - 5);
+            var date7 = today.getFullYear() + ', ' + (today.getMonth() + 1) + ', ' + (today.getDate() - 6);
+            var date1 = today.getFullYear() + ', ' + (today.getMonth() + 1) + ', ' + today.getDate();
+
+            var settings = {
+                "async": true,
+                "crossDomain": true,
+                "url": url,
+                "method": "GET"
+            }
+
+            $.ajax(settings).done(function (response) {
+
+                data = response.result[0].counts
+
+                console.log(data)
+
+
+                var chart = new CanvasJS.Chart("chartContainer", {
+                    animationEnabled: true,
+                    axisX: {
+                        valueFormatString: "DD MMM",
+                        title: "Days",
+                    },
+                    axisY: {
+                        title: "Number of "+ name +" On boarded",
+                        includeZero: false
+                    },
+                    data: [{
+                        type: "line",
+                        xValueFormatString: "DD MMM",
+                        color: "#F08080",
+                        dataPoints: [
+                            { x: new Date(date1), y: data.today },
+                            { x: new Date(date2), y: data.two },
+                            { x: new Date(date3), y: data.three },
+                            { x: new Date(date4), y: data.four },
+                            { x: new Date(date5), y: data.five },
+                            { x: new Date(date6), y: data.six },
+                            { x: new Date(date7), y: data.seven }
+                        ]
+                    }]
+                });
+
+
+                chart.render();
+
+
+            });
+
+
+        });
+
+    }
+
+let alertData = [{
+  "properties": {
+    "essentials": {
+      "severity": "Sev1",
+      "signalType": "Metric",
+      "alertState": "New",
+      "monitorCondition": "Resolved",
+      "monitorService": "Platform",
+      "targetResource": "/subscriptions/ed03d0f8-d22c-4c9d-b117-266f95c38df0/resourcegroups/cpmonitor/providers/microsoft.web/sites/dpdhlcpux",
+      "targetResourceName": "dpdhlcpux",
+      "targetResourceGroup": "cpmonitor",
+      "targetResourceType": "sites",
+      "sourceCreatedId": "ed03d0f8-d22c-4c9d-b117-266f95c38df0_cpmonitor_microsoft.insights_metricAlerts_HTML_Page Facing Huge hitting issue_1413387373",
+      "smartGroupId": "0944f2c9-96aa-4739-a37f-e14dc166c273",
+      "alertRule": "/subscriptions/ed03d0f8-d22c-4c9d-b117-266f95c38df0/resourceGroups/cpmonitor/providers/microsoft.insights/metricAlerts/HTML_Page Facing Huge hitting issue",
+      "startDateTime": "2019-07-10T05:19:06.9065815Z",
+      "lastModifiedDateTime": "2019-07-10T05:25:42.4709141Z",
+      "monitorConditionResolvedDateTime": "2019-07-10T05:25:44.6939067Z",
+      "actionStatus": {
+        "isSuppressed": false
+      },
+      "description": ""
+    },
+    "context": {
+      "version": "2.0",
+      "properties": null,
+      "status": "Activated",
+      "context": {
+        "timestamp": "2019-07-10T05:18:36.6137303Z",
+        "id": "/subscriptions/ed03d0f8-d22c-4c9d-b117-266f95c38df0/resourceGroups/cpmonitor/providers/microsoft.insights/metricAlerts/HTML_Page%20Facing%20Huge%20hitting%20issue",
+        "name": "HTML_Page Facing Huge hitting issue",
+        "description": "",
+        "conditionType": "SingleResourceMultipleMetricCriteria",
+        "severity": "1",
+        "condition": {
+          "windowSize": "PT5M",
+          "allOf": [
+            {
+              "metricName": "Requests",
+              "metricNamespace": "Microsoft.Web/sites",
+              "operator": "GreaterThan",
+              "threshold": "1",
+              "timeAggregation": "Maximum",
+              "dimensions": [
+                {
+                  "name": "ResourceId",
+                  "value": "dpdhlcpux.azurewebsites.net"
+                },
+                {
+                  "name": "ServerName",
+                  "value": "RD0003FF41E64E"
+                }
+              ],
+              "metricValue": 15
+            }
+          ],
+          "windowStartTime": "2019-07-10T05:10:36.608Z",
+          "windowEndTime": "2019-07-10T05:15:36.608Z"
+        },
+        "subscriptionId": "ed03d0f8-d22c-4c9d-b117-266f95c38df0",
+        "resourceGroupName": "cpmonitor",
+        "resourceName": "dpdhlcpux",
+        "resourceType": "Microsoft.Web/sites",
+        "resourceId": "/subscriptions/ed03d0f8-d22c-4c9d-b117-266f95c38df0/resourceGroups/cpmonitor/providers/Microsoft.Web/sites/dpdhlcpux",
+        "portalLink": "https://portal.azure.com/#resource/subscriptions/ed03d0f8-d22c-4c9d-b117-266f95c38df0/resourceGroups/cpmonitor/providers/Microsoft.Web/sites/dpdhlcpux"
+      }
+    },
+    "egressConfig": {
+      "partitionKey": "MonitorServiceConfigurationCollectionPartition",
+      "monitorService": "Platform",
+      "monitorServiceOwnerEmailIds": "rkadr@microsoft.com",
+      "modifiedByApplicationId": "b0597695-42dd-4cf3-88bd-fc423874c54a",
+      "displayConfig": [
+        {
+          "rootJsonNode": "Context",
+          "sectionName": "",
+          "displayControls": [
+            {
+              "resourceId": "ResourceId",
+              "metricData": {
+                "rootJsonNode": "Condition.AllOf",
+                "metricName": "MetricName",
+                "metricNamespace": "MetricNamespace",
+                "aggregationType": "TimeAggregation",
+                "operator": "Operator",
+                "staticThreshold": {
+                  "upperThreshold": "Threshold"
+                },
+                "dynamicThreshold": {
+                  "consecutivePeriods": "failingPeriods.numberOfEvaluationPeriods",
+                  "consecutiveViolations": "failingPeriods.minFailingPeriodsToAlert",
+                  "sensitivity": "alertSensitivity",
+                  "startTime": "ignoreDataBefore"
+                },
+                "dimensions": {
+                  "rootJsonNode": "Dimensions",
+                  "keyProperty": "Name",
+                  "valueProperty": "Value"
+                }
+              },
+              "alertFiredTime": "Condition.WindowEndTime",
+              "timeGrain": "Condition.WindowSize",
+              "property": "",
+              "displayName": "Why did this alert fire?",
+              "type": "MetricChart",
+              "isOptional": true
+            },
+            {
+              "property": "Condition.WindowStartTime",
+              "displayName": "Evaluation window start time (for which alert fired)",
+              "type": "Text",
+              "isOptional": true
+            },
+            {
+              "property": "Condition.WindowEndTime",
+              "displayName": "Evaluation window end time (for which alert fired)",
+              "type": "Text",
+              "isOptional": true
+            }
+          ]
+        },
+        {
+          "rootJsonNode": "Context.Condition.AllOf",
+          "sectionName": "Criterion",
+          "displayControls": [
+            {
+              "property": "MetricName",
+              "displayName": "Metric name",
+              "type": "Text",
+              "isOptional": false
+            },
+            {
+              "property": "MetricNameSpace",
+              "displayName": "Metric namespace",
+              "type": "Text",
+              "isOptional": false
+            },
+            {
+              "property": "TimeAggregation",
+              "displayName": "Time aggregation",
+              "type": "Text",
+              "isOptional": false
+            },
+            {
+              "property": "Operator",
+              "displayName": "Operator",
+              "type": "Text",
+              "isOptional": false
+            },
+            {
+              "property": "Threshold",
+              "displayName": "Threshold",
+              "type": "Text",
+              "isOptional": true
+            },
+            {
+              "property": "MetricValue",
+              "displayName": "Metric value (when alert fired)",
+              "type": "Text",
+              "isOptional": true
+            },
+            {
+              "property": "AlertSensitivity",
+              "displayName": "Alert sensitivity",
+              "type": "Text",
+              "isOptional": true
+            },
+            {
+              "property": "IgnoreDataBefore",
+              "displayName": "Ignore data before",
+              "type": "Text",
+              "isOptional": true
+            },
+            {
+              "property": "FailingPeriods.MinFailingPeriodsToAlert",
+              "displayName": "Number of violations",
+              "type": "Text",
+              "isOptional": true
+            },
+            {
+              "property": "FailingPeriods.NumberOfEvaluationPeriods",
+              "displayName": "Number of examined periods",
+              "type": "Text",
+              "isOptional": true
+            },
+            {
+              "showHeader": true,
+              "columns": [
+                {
+                  "property": "Name",
+                  "displayName": "Dimension Name"
+                },
+                {
+                  "property": "Value",
+                  "displayName": "Dimension Value"
+                }
+              ],
+              "property": "Dimensions",
+              "displayName": "Dimensions",
+              "type": "Table",
+              "isOptional": false
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "id": "/subscriptions/ed03d0f8-d22c-4c9d-b117-266f95c38df0/providers/Microsoft.AlertsManagement/alerts/1392d9e8-dc7a-4f49-9ecc-317b02fbc98c",
+  "type": "Microsoft.AlertsManagement/alerts",
+  "name": "Page Huge hitting issue"
+},
+{
+  "properties": {
+    "essentials": {
+      "severity": "Sev3",
+      "signalType": "Metric",
+      "alertState": "New",
+      "monitorCondition": "Resolved",
+      "monitorService": "Platform",
+      "targetResource": "/subscriptions/ed03d0f8-d22c-4c9d-b117-266f95c38df0/resourcegroups/cpmonitor/providers/microsoft.web/sites/dpdhlcpux",
+      "targetResourceName": "dpdhlcpux",
+      "targetResourceGroup": "cpmonitor",
+      "targetResourceType": "sites",
+      "sourceCreatedId": "ed03d0f8-d22c-4c9d-b117-266f95c38df0_cpmonitor_microsoft.insights_metricAlerts_slowloading_ux_issue_-514380294",
+      "smartGroupId": "66285175-3253-4f50-996a-c9d69ef304e8",
+      "alertRule": "/subscriptions/ed03d0f8-d22c-4c9d-b117-266f95c38df0/resourceGroups/cpmonitor/providers/microsoft.insights/metricAlerts/slowloading_ux_issue",
+      "startDateTime": "2019-07-06T07:48:42.4919257Z",
+      "lastModifiedDateTime": "2019-07-06T07:52:40.5998113Z",
+      "monitorConditionResolvedDateTime": "2019-07-06T07:52:42.2155816Z",
+      "actionStatus": {
+        "isSuppressed": false
+      },
+      "description": "Hey, buddy your dpdhl application got slow loading."
+    },
+    "context": {
+      "version": "2.0",
+      "properties": null,
+      "status": "Activated",
+      "context": {
+        "timestamp": "2019-07-06T07:48:03.9756291Z",
+        "id": "/subscriptions/ed03d0f8-d22c-4c9d-b117-266f95c38df0/resourceGroups/cpmonitor/providers/microsoft.insights/metricAlerts/slowloading_ux_issue",
+        "name": "slowloading_ux_issue",
+        "description": "Hey, buddy your dpdhl application got slow loading.",
+        "conditionType": "SingleResourceMultipleMetricCriteria",
+        "severity": "1",
+        "condition": {
+          "windowSize": "PT5M",
+          "allOf": [
+            {
+              "metricName": "CpuTime",
+              "metricNamespace": "Microsoft.Web/sites",
+              "operator": "LessThanOrEqual",
+              "threshold": "1",
+              "timeAggregation": "Total",
+              "dimensions": [
+                {
+                  "name": "ResourceId",
+                  "value": "dpdhlcpux.azurewebsites.net"
+                }
+              ],
+              "metricValue": 0.009
+            }
+          ],
+          "windowStartTime": "2019-07-06T07:40:03.97Z",
+          "windowEndTime": "2019-07-06T07:45:03.97Z"
+        },
+        "subscriptionId": "ed03d0f8-d22c-4c9d-b117-266f95c38df0",
+        "resourceGroupName": "cpmonitor",
+        "resourceName": "dpdhlcpux",
+        "resourceType": "Microsoft.Web/sites",
+        "resourceId": "/subscriptions/ed03d0f8-d22c-4c9d-b117-266f95c38df0/resourceGroups/cpmonitor/providers/Microsoft.Web/sites/dpdhlcpux",
+        "portalLink": "https://portal.azure.com/#resource/subscriptions/ed03d0f8-d22c-4c9d-b117-266f95c38df0/resourceGroups/cpmonitor/providers/Microsoft.Web/sites/dpdhlcpux"
+      }
+    },
+    "egressConfig": {
+      "partitionKey": "MonitorServiceConfigurationCollectionPartition",
+      "monitorService": "Platform",
+      "monitorServiceOwnerEmailIds": "rkadr@microsoft.com",
+      "modifiedByApplicationId": "b0597695-42dd-4cf3-88bd-fc423874c54a",
+      "displayConfig": [
+        {
+          "rootJsonNode": "Context",
+          "sectionName": "",
+          "displayControls": [
+            {
+              "resourceId": "ResourceId",
+              "metricData": {
+                "rootJsonNode": "Condition.AllOf",
+                "metricName": "MetricName",
+                "metricNamespace": "MetricNamespace",
+                "aggregationType": "TimeAggregation",
+                "operator": "Operator",
+                "staticThreshold": {
+                  "upperThreshold": "Threshold"
+                },
+                "dynamicThreshold": {
+                  "consecutivePeriods": "failingPeriods.numberOfEvaluationPeriods",
+                  "consecutiveViolations": "failingPeriods.minFailingPeriodsToAlert",
+                  "sensitivity": "alertSensitivity",
+                  "startTime": "ignoreDataBefore"
+                },
+                "dimensions": {
+                  "rootJsonNode": "Dimensions",
+                  "keyProperty": "Name",
+                  "valueProperty": "Value"
+                }
+              },
+              "alertFiredTime": "Condition.WindowEndTime",
+              "timeGrain": "Condition.WindowSize",
+              "property": "",
+              "displayName": "Why did this alert fire?",
+              "type": "MetricChart",
+              "isOptional": true
+            },
+            {
+              "property": "Condition.WindowStartTime",
+              "displayName": "Evaluation window start time (for which alert fired)",
+              "type": "Text",
+              "isOptional": true
+            },
+            {
+              "property": "Condition.WindowEndTime",
+              "displayName": "Evaluation window end time (for which alert fired)",
+              "type": "Text",
+              "isOptional": true
+            }
+          ]
+        },
+        {
+          "rootJsonNode": "Context.Condition.AllOf",
+          "sectionName": "Criterion",
+          "displayControls": [
+            {
+              "property": "MetricName",
+              "displayName": "Metric name",
+              "type": "Text",
+              "isOptional": false
+            },
+            {
+              "property": "MetricNameSpace",
+              "displayName": "Metric namespace",
+              "type": "Text",
+              "isOptional": false
+            },
+            {
+              "property": "TimeAggregation",
+              "displayName": "Time aggregation",
+              "type": "Text",
+              "isOptional": false
+            },
+            {
+              "property": "Operator",
+              "displayName": "Operator",
+              "type": "Text",
+              "isOptional": false
+            },
+            {
+              "property": "Threshold",
+              "displayName": "Threshold",
+              "type": "Text",
+              "isOptional": true
+            },
+            {
+              "property": "MetricValue",
+              "displayName": "Metric value (when alert fired)",
+              "type": "Text",
+              "isOptional": true
+            },
+            {
+              "property": "AlertSensitivity",
+              "displayName": "Alert sensitivity",
+              "type": "Text",
+              "isOptional": true
+            },
+            {
+              "property": "IgnoreDataBefore",
+              "displayName": "Ignore data before",
+              "type": "Text",
+              "isOptional": true
+            },
+            {
+              "property": "FailingPeriods.MinFailingPeriodsToAlert",
+              "displayName": "Number of violations",
+              "type": "Text",
+              "isOptional": true
+            },
+            {
+              "property": "FailingPeriods.NumberOfEvaluationPeriods",
+              "displayName": "Number of examined periods",
+              "type": "Text",
+              "isOptional": true
+            },
+            {
+              "showHeader": true,
+              "columns": [
+                {
+                  "property": "Name",
+                  "displayName": "Dimension Name"
+                },
+                {
+                  "property": "Value",
+                  "displayName": "Dimension Value"
+                }
+              ],
+              "property": "Dimensions",
+              "displayName": "Dimensions",
+              "type": "Table",
+              "isOptional": false
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "id": "/subscriptions/ed03d0f8-d22c-4c9d-b117-266f95c38df0/providers/Microsoft.AlertsManagement/alerts/db630fae-5baa-46a0-84ee-6918828ddee3",
+  "type": "Microsoft.AlertsManagement/alerts",
+  "name": "Slowloading Request Issue"
+},
+{
+  "properties": {
+    "essentials": {
+      "severity": "Sev2",
+      "signalType": "Metric",
+      "alertState": "New",
+      "monitorCondition": "Fired",
+      "monitorService": "Platform",
+      "targetResource": "/subscriptions/ed03d0f8-d22c-4c9d-b117-266f95c38df0/resourcegroups/resdpdhlwiprocommonplatform/providers/microsoft.dbforpostgresql/servers/commonplatform",
+      "targetResourceName": "commonplatform",
+      "targetResourceGroup": "resdpdhlwiprocommonplatform",
+      "targetResourceType": "servers",
+      "sourceCreatedId": "ed03d0f8-d22c-4c9d-b117-266f95c38df0_resDPDHLWiproCommonPlatform_microsoft.insights_metricAlerts_CPU Greater Than 50_214555703",
+      "smartGroupId": "b4d0a434-9696-435f-8c9a-b0f35e536a7f",
+      "alertRule": "/subscriptions/ed03d0f8-d22c-4c9d-b117-266f95c38df0/resourceGroups/resDPDHLWiproCommonPlatform/providers/microsoft.insights/metricAlerts/CPU Greater Than 50",
+      "startDateTime": "2019-07-02T13:45:03.3491292Z",
+      "lastModifiedDateTime": "2019-07-02T13:45:03.3491292Z",
+      "lastModifiedUserName": "System",
+      "actionStatus": {
+        "isSuppressed": false
+      },
+      "description": "cpu percentage exceeding the limit"
+    },
+    "context": {
+      "version": "2.0",
+      "properties": null,
+      "status": "Activated",
+      "context": {
+        "timestamp": "2019-07-02T13:44:50.3369487Z",
+        "id": "/subscriptions/ed03d0f8-d22c-4c9d-b117-266f95c38df0/resourceGroups/resDPDHLWiproCommonPlatform/providers/microsoft.insights/metricAlerts/CPU%20Greater%20Than%2050",
+        "name": "CPU Greater Than 50",
+        "description": "cpu percentage exceeding the limit",
+        "conditionType": "SingleResourceMultipleMetricCriteria",
+        "severity": "2",
+        "condition": {
+          "windowSize": "PT5M",
+          "allOf": [
+            {
+              "metricName": "cpu_percent",
+              "metricNamespace": "Microsoft.DBforPostgreSQL/servers",
+              "operator": "GreaterThan",
+              "threshold": "0.1",
+              "timeAggregation": "Average",
+              "dimensions": [
+                {
+                  "name": "ResourceId",
+                  "value": "/SUBSCRIPTIONS/ED03D0F8-D22C-4C9D-B117-266F95C38DF0/RESOURCEGROUPS/RESDPDHLWIPROCOMMONPLATFORM/PROVIDERS/MICROSOFT.DBFORPOSTGRESQL/SERVERS/COMMONPLATFORM"
+                }
+              ],
+              "metricValue": 0.728
+            },
+            {
+              "metricName": "active_connections",
+              "metricNamespace": "Microsoft.DBforPostgreSQL/servers",
+              "operator": "GreaterThan",
+              "threshold": "1",
+              "timeAggregation": "Maximum",
+              "dimensions": [
+                {
+                  "name": "ResourceId",
+                  "value": "/SUBSCRIPTIONS/ED03D0F8-D22C-4C9D-B117-266F95C38DF0/RESOURCEGROUPS/RESDPDHLWIPROCOMMONPLATFORM/PROVIDERS/MICROSOFT.DBFORPOSTGRESQL/SERVERS/COMMONPLATFORM"
+                }
+              ],
+              "metricValue": 4
+            }
+          ],
+          "windowStartTime": "2019-07-02T13:36:50.336Z",
+          "windowEndTime": "2019-07-02T13:41:50.336Z"
+        },
+        "subscriptionId": "ed03d0f8-d22c-4c9d-b117-266f95c38df0",
+        "resourceGroupName": "resDPDHLWiproCommonPlatform",
+        "resourceName": "commonplatform",
+        "resourceType": "Microsoft.DBforPostgreSQL/servers",
+        "resourceId": "/subscriptions/ed03d0f8-d22c-4c9d-b117-266f95c38df0/resourceGroups/resDPDHLWiproCommonPlatform/providers/Microsoft.DBforPostgreSQL/servers/commonplatform",
+        "portalLink": "https://portal.azure.com/#resource/subscriptions/ed03d0f8-d22c-4c9d-b117-266f95c38df0/resourceGroups/resDPDHLWiproCommonPlatform/providers/Microsoft.DBforPostgreSQL/servers/commonplatform"
+      }
+    },
+    "egressConfig": {
+      "partitionKey": "MonitorServiceConfigurationCollectionPartition",
+      "monitorService": "Platform",
+      "monitorServiceOwnerEmailIds": "rkadr@microsoft.com",
+      "modifiedByApplicationId": "b0597695-42dd-4cf3-88bd-fc423874c54a",
+      "displayConfig": [
+        {
+          "rootJsonNode": "Context",
+          "sectionName": "",
+          "displayControls": [
+            {
+              "resourceId": "ResourceId",
+              "metricData": {
+                "rootJsonNode": "Condition.AllOf",
+                "metricName": "MetricName",
+                "metricNamespace": "MetricNamespace",
+                "aggregationType": "TimeAggregation",
+                "operator": "Operator",
+                "staticThreshold": {
+                  "upperThreshold": "Threshold"
+                },
+                "dynamicThreshold": {
+                  "consecutivePeriods": "failingPeriods.numberOfEvaluationPeriods",
+                  "consecutiveViolations": "failingPeriods.minFailingPeriodsToAlert",
+                  "sensitivity": "alertSensitivity",
+                  "startTime": "ignoreDataBefore"
+                },
+                "dimensions": {
+                  "rootJsonNode": "Dimensions",
+                  "keyProperty": "Name",
+                  "valueProperty": "Value"
+                }
+              },
+              "alertFiredTime": "Condition.WindowEndTime",
+              "timeGrain": "Condition.WindowSize",
+              "property": "",
+              "displayName": "Why did this alert fire?",
+              "type": "MetricChart",
+              "isOptional": true
+            },
+            {
+              "property": "Condition.WindowStartTime",
+              "displayName": "Evaluation window start time (for which alert fired)",
+              "type": "Text",
+              "isOptional": true
+            },
+            {
+              "property": "Condition.WindowEndTime",
+              "displayName": "Evaluation window end time (for which alert fired)",
+              "type": "Text",
+              "isOptional": true
+            }
+          ]
+        },
+        {
+          "rootJsonNode": "Context.Condition.AllOf",
+          "sectionName": "Criterion",
+          "displayControls": [
+            {
+              "property": "MetricName",
+              "displayName": "Metric name",
+              "type": "Text",
+              "isOptional": false
+            },
+            {
+              "property": "MetricNameSpace",
+              "displayName": "Metric namespace",
+              "type": "Text",
+              "isOptional": false
+            },
+            {
+              "property": "TimeAggregation",
+              "displayName": "Time aggregation",
+              "type": "Text",
+              "isOptional": false
+            },
+            {
+              "property": "Operator",
+              "displayName": "Operator",
+              "type": "Text",
+              "isOptional": false
+            },
+            {
+              "property": "Threshold",
+              "displayName": "Threshold",
+              "type": "Text",
+              "isOptional": true
+            },
+            {
+              "property": "MetricValue",
+              "displayName": "Metric value (when alert fired)",
+              "type": "Text",
+              "isOptional": true
+            },
+            {
+              "property": "AlertSensitivity",
+              "displayName": "Alert sensitivity",
+              "type": "Text",
+              "isOptional": true
+            },
+            {
+              "property": "IgnoreDataBefore",
+              "displayName": "Ignore data before",
+              "type": "Text",
+              "isOptional": true
+            },
+            {
+              "property": "FailingPeriods.MinFailingPeriodsToAlert",
+              "displayName": "Number of violations",
+              "type": "Text",
+              "isOptional": true
+            },
+            {
+              "property": "FailingPeriods.NumberOfEvaluationPeriods",
+              "displayName": "Number of examined periods",
+              "type": "Text",
+              "isOptional": true
+            },
+            {
+              "showHeader": true,
+              "columns": [
+                {
+                  "property": "Name",
+                  "displayName": "Dimension Name"
+                },
+                {
+                  "property": "Value",
+                  "displayName": "Dimension Value"
+                }
+              ],
+              "property": "Dimensions",
+              "displayName": "Dimensions",
+              "type": "Table",
+              "isOptional": false
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "id": "/subscriptions/ed03d0f8-d22c-4c9d-b117-266f95c38df0/providers/Microsoft.AlertsManagement/alerts/8e5e792e-ba23-421f-a8a2-e1cad837e978",
+  "type": "Microsoft.AlertsManagement/alerts",
+  "name": "CPU Greater Than 50"
+}]
+
+console.log(alertData)
+
+
+let txt = '';
+
+for(x in alertData){
+
+    let prope = alertData[x].properties
+
+    let essen = prope.essentials
+
+
+    txt +='<div class="content"> <div class="user-icon"> </div><div class="user-details"><div class="user-details-name">'+ alertData[x].name +'</div>';
+    txt +='<div class="user-details-text"><b>Last Modified:</b>'+ essen.lastModifiedDateTime +'</div><div class="user-details-text"><b>Severity</b>: '+ essen.severity +'</div><div class="user-details-text"><b>Alert State</b>: '+ essen.alertState +'</div> </div>';
+    txt +='<div class="user-action"><div class="user-action-icon"></div></div></div>';
+
+    document.getElementById("alertdemo").innerHTML = txt
+
+
+}
+
+
+</script>
+
+
+<script src="js/jquery.min.js"></script>
+
+<script src="js/popper.min.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- Menu Plugin JavaScript -->
+<script src="js/sidebar-nav.min.js"></script>
+<!--slimscroll JavaScript -->
+<script src="js/jquery.slimscroll.js"></script>
+<!--Wave Effects -->
+<script src="js/waves.js"></script>
+<!--Counter js -->
+<script src="js/jquery.waypoints.js"></script>
+<script src="js/jquery.counterup.min.js"></script>
+<!-- chartist chart -->
+<script src="js/chartist.min.js"></script>
+<script src="js/chartist-plugin-tooltip.min.js"></script>
+<!-- Sparkline chart JavaScript -->
+<script src="js/jquery.sparkline.min.js"></script>
+<!-- Custom Theme JavaScript -->
+<script src="js/custom.min.js"></script>
+<script src="js/dashboard1.js"></script>
+<script src="js/jquery.toast.js"></script>
+<script src="js/datajs/jquery.slimscroll.min.js"></script>
+<script src="js/datajs/script.js"></script>
+
+
+<script>
+
+    $(function () {
+        $('[data-toggle="popover"]').popover()
+    })
+
+
+</script>
+
+</html>
