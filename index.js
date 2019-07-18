@@ -372,6 +372,6 @@ app.get('/logout', function(req, res){
 });
 
 //server.on('request', app);
-app.listen(process.env.POSRT, () => {
+app.listen(process.env.PORT, () => {
     console.log('Server listening on http://localhost:3000');
 });
