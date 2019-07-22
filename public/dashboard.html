@@ -136,6 +136,7 @@
                     <a href="association.html" class="waves-effect"><i class="fa fa-sitemap fa-fw"
                             aria-hidden="true"></i>Association</a>
                 </li>
+                <!---
                 <li>
                     <a href="bu.html" class="waves-effect"><i class="fa fa-group fa-fw"
                             aria-hidden="true"></i>Business
@@ -147,10 +148,11 @@
                 </li>
                 <li>
                     <a href="devices.html" class="waves-effect"><i class="fa fa-print fa-fw" aria-hidden="true"></i>Devices</a>
-                </li>
+                </li> -->
                 <li>
                     <a href="users.html" class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"></i>Users</a>
                 </li>
+                <!--
                 <li>
                     <a href="facilities.html" class="waves-effect"><i class="fa fa-home fa-fw"
                             aria-hidden="true"></i>Facilities</a>
@@ -161,10 +163,10 @@
                 <li>
                     <a href="shipments.html" class="waves-effect"><i class="fa fa-home fa-fw"
                             aria-hidden="true"></i>Shipments</a>
-                </li>
+                </li>-->
                 <li>
                     <a href="others.html" class="waves-effect"><i class="fa fa-home fa-fw"
-                            aria-hidden="true"></i>Others</a>
+                            aria-hidden="true"></i>Entities</a>
                 </li>
     
                 <li>
@@ -193,7 +195,7 @@
                 <div class="row">
                     <div class="col-lg-3 col-sm-6 col-xs-12">
                         <div class="white-box analytics-info">
-                            <h3 class="box-title">Business Units</h3>
+                            <h3 class="box-title">Entities</h3>
                             <ul class="list-inline two-part">
                                 <li>
                                     <div class="icon-tile">
@@ -208,7 +210,7 @@
                     </div>
                     <div class="col-lg-3 col-sm-6 col-xs-12">
                         <div class="white-box analytics-info">
-                            <h3 class="box-title">Applications</h3>
+                            <h3 class="box-title">Sub Entities</h3>
                             <ul class="list-inline two-part">
                                 <li>
                                     <div class="icon-tile">
@@ -238,24 +240,6 @@
                             </ul>
                         </div>
                     </div>
-
-                    <div class="col-lg-3 col-sm-6 col-xs-12">
-                        <div class="white-box analytics-info">
-                            <h3 class="box-title">Devices</h3>
-                            <ul class="list-inline two-part">
-                                <li>
-                                    <div class="icon-tile">
-                                        <i class="fa fa-print"></i>
-                                    </div>
-                                </li>
-                                <li class="text-right"><i class="ti-arrow-up text-info"></i>
-                                    <span class="counter text-info" style="color: #f98d41;" id="text4">
-                                        <i class="fa fa-spin fa-cog"></i>
-                                    </span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
                 </div>
                 <!-- ============================================================== -->
                 <!-- chat-listing & recent comments -->
@@ -264,6 +248,7 @@
                     <!-- .col -->
                     <div class="col-md-12 col-lg-8 col-sm-12">
                         <div class="white-box analytics-info">
+                          <!---
                             <div class="select_right" style="    display: flex;
                             padding: 10px;">
                                 <h3 class="box-title" style="width: 300px;
@@ -275,6 +260,8 @@
                                     <option value="B"> Applications </option>
                                 </select>
                             </div>
+
+                          -->
 
                             <div id="chartContainer" style="height: 300px; width: 100%;">
 
@@ -314,6 +301,7 @@
 <script>
     window.onload = function () {
 
+      
 
 
         requestCount();
@@ -336,10 +324,10 @@
 
                     data = response.result
 
-                    document.getElementById("text1").innerHTML = data.buCount
-                    document.getElementById("text2").innerHTML = data.appCount
+                    document.getElementById("text1").innerHTML = data.entitiesCount
+                    document.getElementById("text2").innerHTML = data.subEntitiesCount
                     document.getElementById("text3").innerHTML = data.usersCount
-                    document.getElementById("text4").innerHTML = data.devicesCount
+                    //document.getElementById("text4").innerHTML = data.devicesCount
 
 
                 }
@@ -347,23 +335,16 @@
             });
         }
 
+        
+
         buCount("A")
 
         function buCount() {
             document.getElementById("chartContainer").innerHTML = '<div class="loading"><i class="fa fa-spin fa-cog"></i></div>';
 
-            var type = document.getElementById("changegraph").value
+            var type = "A"
 
-            let url = null
-
-            if (type == "A") {
-
-                url = "https://dive11.azurewebsites.net/api/beta/businessunits/getWeekBuCounts"
-
-            } else {
-
-                url = "https://dive11.azurewebsites.net/api/beta/applications/getWeekAppCounts"
-            }
+            url = "https://dive11.azurewebsites.net/api/beta/entity/getWeekEntityCounts"
 
             var today = new Date();
 
@@ -421,6 +402,8 @@
 
             });
         }
+
+        /*
 
 
         $('#changegraph').on('change', function (e) {
@@ -500,9 +483,11 @@
             });
 
 
-        });
+        }); */
 
     }
+
+    
 
 let alertData = [{
   "properties": {

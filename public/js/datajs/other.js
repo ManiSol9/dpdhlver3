@@ -46,7 +46,7 @@ $(document).ready(function () {
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "https://dive12.azurewebsites.net/api/beta/businessunits/getAllBusinessUnits",
+            "url": "https://dive11.azurewebsites.net/api/beta/entity/getEntity",
             "method": "GET",
             "headers": {
                 "content-type": "application/json",
@@ -65,25 +65,24 @@ $(document).ready(function () {
 
     }
 
-    function fecthApps(id) {
+    function fecthApps(id, name) {
 
         let Obj = {
             "orgID": id,
-            "type": "Business Unit"
+            "type": name
         }
 
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "https://dive12.azurewebsites.net/api/beta/associations/getAllEntityChildrens",
-            "method": "POST",
+            "url": "https://dive11.azurewebsites.net/api/beta/entity/getEntityMetadataByEntityID?entityID="+id,
+            "method": "GET",
             "headers": {
                 "content-type": "application/json",
                 "cache-control": "no-cache",
                 "postman-token": "0146efcb-e86f-0ff0-d4ea-d8647cbbfd33"
             },
-            "processData": false,
-            "data": JSON.stringify(Obj)
+            "processData": false
         }
 
         $.ajax(settings).done(function (response) {
@@ -103,31 +102,38 @@ $(document).ready(function () {
         var txt = '<select  id="bid" class="form-control form-control-line" onchange="updateApps()"><option value="">Please select Group</option>';
         myObj = data;
         for (x in myObj) {
-            txt += '<option value="' + myObj[x].id + '">' + myObj[x].name + '</option>';
+            txt += '<option value="' + myObj[x].id + ','+ myObj[x].entity_name +'">' + myObj[x].entity_name + '</option>';
         }
         txt += "</select>";
         document.getElementById("bu").innerHTML = txt;
+        document.getElementById("bu1").innerHTML = txt;
     }
 
     function generateSelect2(data) {
         var txt = '<select  id="appId" class="form-control"><option value="">Please select application</option>';
         myObj = data;
         for (x in myObj) {
-            txt += '<option value="' + myObj[x].node_orig_id + ', ' + myObj[x].node_type + '">' + myObj[x].node + '</option>';
+
+            let entityObj = myObj[x].entity_object
+
+            txt += '<option value="' + myObj[x].id + ','+ entityObj.Name +'">' + entityObj.Name + '</option>';
         }
         txt += "</select>";
         document.getElementById("apps").innerHTML = txt;
+        document.getElementById("apps1").innerHTML = txt;
     }
 
     updateApps = () => {
 
-        let bid = document.getElementById("bid").value
+        let bdata = document.getElementById("bid").value
+
+        let bvalue = bdata.split(",")
 
         document.getElementById("appdiv").style.display = "block"
 
         document.getElementById("apps").innerHTML = '<div class="icon-container" id="iconcontainer"><i class="loader"></i></div>'
 
-        fecthApps(bid)
+        fecthApps(bvalue[0], bvalue[1])
 
     }
 
@@ -149,7 +155,8 @@ $(document).ready(function () {
                 "parentID": null,
                 "parentType": null,
                 "createdBy": "mani",
-                "entityMetadata": excelData
+                "entityMetadata": excelData,
+                "parentInfo": "Entity"
             }
 
             console.log(Obj)
@@ -157,7 +164,7 @@ $(document).ready(function () {
             var settings = {
                 "async": true,
                 "crossDomain": true,
-                "url": "https://dive12.azurewebsites.net/api/beta/entity/createEntity",
+                "url": "https://dive11.azurewebsites.net/api/beta/entity/createEntity",
                 "method": "POST",
                 "processData": false,
                 "headers": {
@@ -198,41 +205,35 @@ $(document).ready(function () {
 
         if (name != "") {
 
-            let parentInfo = null;
+            let childInfo = document.getElementById("appId").value
 
-            let appId = document.getElementById("appId").value;
+            childInfo = childInfo.split(",")
 
-            if(appId == null){
+            let bdata = document.getElementById("bid").value
 
-                parentInfo = [0, ""]
-
-                console.log(parentInfo, "parentInfo")
-
-
-            } else {
-
-                parentInfo = appId.split(",")
-
-                console.log(parentInfo, "parentInfo1")
-
-
-            }
-
+            let bvalue = bdata.split(",")
+    
 
             let Obj = {
                 "entityName": name,
-                "parentID": parentInfo[0],
-                "parentType": parentInfo[1],
+                "parentID": childInfo[0],
+                "parentType": bvalue[1],
+                "parentName": childInfo[1],
+                "parentTypeID": bvalue[0],
+                "parentTypeName": bvalue[1],
                 "createdBy": "mani",
-                "entityMetadata": excelData
+                "entityMetadata": excelData,
+                "parentInfo": "Instance"
             }
 
-            console.log(Obj)
+            console.log(JSON.stringify(Obj))
+
+            
 
             var settings = {
                 "async": true,
                 "crossDomain": true,
-                "url": "https://dive12.azurewebsites.net/api/beta/entity/createEntity",
+                "url": "https://dive11.azurewebsites.net/api/beta/entity/createEntity",
                 "method": "POST",
                 "processData": false,
                 "headers": {
@@ -275,7 +276,7 @@ $(document).ready(function () {
             var settings = {
                 "async": true,
                 "crossDomain": true,
-                "url": "https://dive12.azurewebsites.net/api/beta/entity/getEntityByName?name=" + value,
+                "url": "https://dive11.azurewebsites.net/api/beta/entity/getEntityByName?name=" + value,
                 "method": "GET",
                 "processData": false,
             }
@@ -370,7 +371,7 @@ $(document).ready(function () {
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "https://dive12.azurewebsites.net/api/beta/entity/getEntity",
+            "url": "https://dive11.azurewebsites.net/api/beta/entity/getEntity",
             "method": "GET",
             "processData": false,
         }
@@ -395,15 +396,24 @@ $(document).ready(function () {
         var txt = '';
 
         myObj = data;
-        txt += "<table class='table'><tr><th> Entity Name </th><th> Parent ID </th><th> Created Date </th> <th> Created By  </th> <th>Actions</th></tr>"
+        txt += "<table class='table'><tr><th> Entity Name </th><th> Parent Name </th><th> Created Date </th> <th> Created By  </th><th>Actions</th></tr>"
         for (x in myObj) {
-            txt += "<tr><td>" + myObj[x].entity_name + "</td><td>" + myObj[x].parent_id + "</td><td>" + myObj[x].created_date + "</td><td>" + myObj[x].created_by + "</td>";
-            txt += "<td><button class='btn btn-success'><a style='color: white' href='/entitychildren.html?id="+ myObj[x].id +"'>View Data</a></button><button class='btn btn-danger'><i class='fa fa-trash-o fa-fw' onclick='deletebu(" + myObj[x].id + ")'  aria-hidden='true'></i></button>&nbsp;&nbsp;";
-            txt += "</td></tr>";
+            txt += "<tr><td>" + myObj[x].entity_name + "</td><td>" + myObj[x].parentname + "</td><td>" + myObj[x].created_date + "</td><td>" + myObj[x].created_by + "</td>";
+            //txt += "<td><button class='btn btn-danger' onclick='edit()'>Associate ?</button>&nbsp;&nbsp;</td>";            
+            txt += "<td><button class='btn btn-success'><a style='color: white' href='/entitychildren.html?id="+ myObj[x].id +"'>View Data</a></button>&nbsp;&nbsp;</td>";
+            txt += "<td></td></tr>";
         }
         txt += "</table>"
         document.getElementById("demo").innerHTML = txt;
     }
+
+    edit = () => {
+
+        $("#myModal").modal();
+
+    }
+
+
 
 });
 

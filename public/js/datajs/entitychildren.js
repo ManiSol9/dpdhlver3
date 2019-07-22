@@ -12,7 +12,7 @@ $(document).ready(function () {
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "https://dive12.azurewebsites.net/api/beta/entity/getEntityMetadataByEntityID?entityID="+entityID,
+            "url": "https://dive11.azurewebsites.net/api/beta/entity/getEntityMetadataByEntityID?entityID="+entityID,
             "method": "GET",
             "processData": false,
         }

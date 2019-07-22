@@ -32,6 +32,27 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <style>
+        .loading {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            height: 250px;
+            justify-content: center;
+        }
+
+        .loading i {
+            font-size: 40px;
+            color: #ffcc00;
+        }
+
+        div#hideDiv {
+            position: inherit;
+            width: 100px;
+        }
+    </style>
+
 </head>
 
 <body class="fix-header">
@@ -44,17 +65,18 @@
                     <a class="logo" href="dashboard.html">
                         <b>
                             <!--This is dark logo icon--><img src="images/dhl_logo.png" alt="home" class="dark-logo" />
-                            <!--This is light logo icon--><img src="images/dhl_logo.png" alt="home" class="light-logo" />
+                            <!--This is light logo icon--><img src="images/dhl_logo.png" alt="home"
+                                class="light-logo" />
                         </b>
                     </a>
                 </div>
                 <ul class="nav navbar-top-links navbar-right pull-right">
                     <li>
-                        <a class="profile-pic dropdown-toggle" data-toggle="dropdown"> <img src="images/mani.jpg" alt="user-img"
-                                width="36" class="img-circle">
-        
-                            <b class="hidden-xs"> 
-                                    Admin <span class="caret"></span>
+                        <a class="profile-pic dropdown-toggle" data-toggle="dropdown"> <img src="images/mani.jpg"
+                                alt="user-img" width="36" class="img-circle">
+
+                            <b class="hidden-xs">
+                                Admin <span class="caret"></span>
                             </b></a>
                         <ul class="dropdown-menu">
                             <li><a href="/profile.html">Profile</a></li>
@@ -77,6 +99,7 @@
                         <a href="association.html" class="waves-effect"><i class="fa fa-sitemap fa-fw"
                                 aria-hidden="true"></i>Association</a>
                     </li>
+                    <!---
                     <li>
                         <a href="bu.html" class="waves-effect"><i class="fa fa-group fa-fw"
                                 aria-hidden="true"></i>Business
@@ -88,10 +111,12 @@
                     </li>
                     <li>
                         <a href="devices.html" class="waves-effect"><i class="fa fa-print fa-fw" aria-hidden="true"></i>Devices</a>
-                    </li>
+                    </li>-->
                     <li>
-                        <a href="users.html" class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"></i>Users</a>
+                        <a href="users.html" class="waves-effect"><i class="fa fa-user fa-fw"
+                                aria-hidden="true"></i>Users</a>
                     </li>
+                    <!---
                     <li>
                         <a href="facilities.html" class="waves-effect"><i class="fa fa-home fa-fw"
                                 aria-hidden="true"></i>Facilities</a>
@@ -102,21 +127,23 @@
                     <li>
                         <a href="shipments.html" class="waves-effect"><i class="fa fa-home fa-fw"
                                 aria-hidden="true"></i>Shipments</a>
-                    </li>
+                    </li> --->
                     <li>
                         <a href="others.html" class="waves-effect"><i class="fa fa-home fa-fw"
-                                aria-hidden="true"></i>Others</a>
+                                aria-hidden="true"></i>Entities</a>
                     </li>
-        
+
                     <li>
-                        <a href="reports.html" class="waves-effect"><i class="fa fa-signal fa-fw" aria-hidden="true"></i>Reports</a>
+                        <a href="reports.html" class="waves-effect"><i class="fa fa-signal fa-fw"
+                                aria-hidden="true"></i>Reports</a>
                     </li>
                     <li>
-                        <a href="logs.html" class="waves-effect"><i class="fa fa-sliders fa-fw" aria-hidden="true"></i>Logs</a>
+                        <a href="logs.html" class="waves-effect"><i class="fa fa-sliders fa-fw"
+                                aria-hidden="true"></i>Logs</a>
                     </li>
                 </ul>
             </div>
-        
+
         </div>
 
         <div id="page-wrapper">
@@ -132,11 +159,11 @@
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
-                
+
                 <div class="row">
                     <div class="col-md-12 col-lg-12 col-sm-12">
                         <div class="white-box">
-                            <div class="table-responsive" id="demo1"  style="display: none;">
+                            <div class="table-responsive" id="demo1" style="display: none;">
                                 <div class="col-md-12">
                                     <div class="form-horizontal form-material">
                                         <div class="form-group col-md-12">
@@ -175,7 +202,8 @@
                                                             file (XLSX Only)</label>
                                                     </div>
                                                     <div class="col-md-12 custom-file">
-                                                        <input type="file" class="custom-file-input" id="uploadExcel" onchange="Upload()"
+                                                        <input type="file" class="custom-file-input" id="uploadExcel"
+                                                            onchange="Upload()"
                                                             aria-describedby="inputGroupFileAddon01">
                                                     </div>
                                                 </div>
@@ -223,7 +251,7 @@
                                                 class="btn btn-success pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">+
                                                 Add Entity</button>
 
-                                                <!--
+
 
                                             <label
                                                 class="or pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">(OR)</label>
@@ -231,9 +259,9 @@
 
                                             <button onclick="addapp()"
                                                 class="btn btn-success pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">
-                                                + Select BU and Children </button>
+                                                + ADD Parent </button>
 
-                                                -->
+
 
 
                                         </div>
@@ -242,7 +270,7 @@
                                         <div id="addapppart" style="display: none">
 
                                             <div class="form-group  col-md-12">
-                                                <label class="col-sm-12">Select BU</label>
+                                                <label class="col-sm-12">Select Parent Entity</label>
                                                 <div class="col-sm-12" id="bu">
                                                 </div>
                                             </div>
@@ -257,7 +285,8 @@
 
                                             <div class="form-group col-md-12">
                                                 <div class="col-sm-12" style="text-align: right">
-                                                    <button id="saveenity1" class="btn btn-success">+ Add Entity</button>
+                                                    <button id="saveenity1" class="btn btn-success">+ Add
+                                                        Entity</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -280,7 +309,43 @@
             <footer class="footer text-center"> 2019 &copy; DPDHL iot.dhl.com </footer>
         </div>
 
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
 
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Modal Header</h4>
+                    </div>
+                    <div class="modal-body" style="height: 150px;">
+
+                        <div id="addapppart1" style="display: block">
+
+                            <div class="form-group  col-md-12">
+                                <label class="col-sm-12">Select Parent Entity</label>
+                                <div class="col-sm-12" id="bu1">
+                                </div>
+                            </div>
+                            <div class="form-group  col-md-12" id="appdiv" style="display: block">
+                                <label class="col-sm-12">Select Children</label>
+                                <div class="col-sm-12" id="apps1">
+                                    <select id="appId1">
+                                        <option value=""></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </div>
 
 </body>

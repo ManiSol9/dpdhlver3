@@ -189,7 +189,7 @@ $(document).ready(function () {
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "https://dive11.azurewebsites.net/api/beta/businessunits/getAllBusinessUnits",
+            "url": "https://dive11.azurewebsites.net/api/beta/entity/getEntity",
             "method": "GET",
             "headers": {
                 "content-type": "application/json",
@@ -215,7 +215,7 @@ $(document).ready(function () {
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "https://dive11.azurewebsites.net/api/beta/applications/getApplicationsByBuID?buID="+id,
+            "url": "https://dive11.azurewebsites.net/api/beta/entity/getEntityMetadataByEntityID?entityID="+id,
             "method": "GET",
             "headers": {
                 "content-type": "application/json",
@@ -240,13 +240,15 @@ $(document).ready(function () {
 
     updateApps = () => {
 
-        let bid = document.getElementById("bid").value
+        let bdata = document.getElementById("bid").value
+
+        let bvalue = bdata.split(",")
 
         document.getElementById("appdiv").style.display = "block"
 
         document.getElementById("apps").innerHTML = '<div class="icon-container" id="iconcontainer"><i class="loader"></i></div>'
 
-        fecthApps(bid)
+        fecthApps(bvalue[0], bvalue[1])
 
     }
 
@@ -270,14 +272,19 @@ $(document).ready(function () {
 
 
     function generateSelect2(data) {
-        var txt = '<select  id="appId" class="form-control"><option value="">Please select application</option>';
+        var txt = '<select  id="appId" class="form-control"><option value="">Please select Child</option>';
         myObj = data;
         for (x in myObj) {
-            txt += '<option value="' + myObj[x].id + '">' + myObj[x].name + '</option>';
+
+            let entityObj = myObj[x].entity_object
+
+            txt += '<option value="' + myObj[x].id + ','+ entityObj.Name +'">' + entityObj.Name + '</option>';
         }
         txt += "</select>";
         document.getElementById("apps").innerHTML = txt;
+        //document.getElementById("apps1").innerHTML = txt;
     }
+
 
     function generateSelect3(data) {
         var txt = '<select  id="gId" class="form-control form-control-line" onchange="pushGroup()"><option value="">Please select Group</option>';
@@ -295,12 +302,12 @@ $(document).ready(function () {
         var txt = '<select  id="bid" class="form-control form-control-line" onchange="updateApps()"><option value="">Please select Group</option>';
         myObj = data;
         for (x in myObj) {
-            txt += '<option value="' + myObj[x].id + '">' + myObj[x].name + '</option>';
+            txt += '<option value="' + myObj[x].id + ','+ myObj[x].entity_name +'">' + myObj[x].entity_name + '</option>';
         }
         txt += "</select>";
         document.getElementById("bu").innerHTML = txt;
+        //document.getElementById("bu1").innerHTML = txt;
     }
-
 
     deletebu = (x, y) => {
 
@@ -682,7 +689,7 @@ $(document).ready(function () {
                 groupsData.push({
                     userGroupID: gid,
                     users: fetchUsers,
-                    deviceGroupName: gName,
+                    userGroupName: gName,
                     createdBy: "vcmanikanta@hotmail.com"
                 })
 
@@ -712,13 +719,27 @@ $(document).ready(function () {
 
             e.preventDefault();
 
+            let childInfo = document.getElementById("appId").value
+
+            childInfo = childInfo.split(",")
+
+            let bdata = document.getElementById("bid").value
+
+            let bvalue = bdata.split(",")
+
+
+
             let finalData = {
-                "buID": bid.value,
-                "appID": appId.value,
+                "parentEntityID": childInfo[0],
+                "parentEntityType": bvalue[1],
+                "parentEntityName": childInfo[1],
+                "parentEntityCategory": "Instance",
                 "userGroups": groupsData
             }
 
             console.log(finalData)
+
+            
 
             let headers = {
                 "Content-Type": "application/json"
@@ -727,7 +748,7 @@ $(document).ready(function () {
             var settings = {
                 "async": true,
                 "crossDomain": true,
-                "url": "https://dive11.azurewebsites.net/api/beta/users/createUsersWithUserGroups",
+                "url": "https://dive11.azurewebsites.net/api/beta/users/createUsersWithUserGroupsForDemo",
                 "method": "POST",
                 "processData": false,
                 "headers": headers,
