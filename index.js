@@ -12,9 +12,9 @@ var bunyan = require('bunyan');
 var config = require('./config');
 const server = require('https').createServer();
 
-//var server1 = "https://dpdlcpuxv3.azurewebsites.net"
+var server1 = "https://dpdlcpuxv3.azurewebsites.net"
 
-var server1 = "http://localhost:3000"
+//var server1 = "http://localhost:3000"
 
 // set up database for express session
 var MongoStore = require('connect-mongo')(expressSession);
@@ -372,11 +372,11 @@ app.get('/logout', function(req, res){
 });
 
 //server.on('request', app);
-//app.listen(process.env.PORT, () => {
-  //  console.log('Server listening on http://localhost:3000');
-//});
-
-
-app.listen(3000, () => {
-  console.log('Server listening on http://localhost:3000');
+app.listen(process.env.PORT, () => {
+    console.log('Server listening on http://localhost:3000');
 });
+
+
+//app.listen(3000, () => {
+  //console.log('Server listening on http://localhost:3000');
+//});

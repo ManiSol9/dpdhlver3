@@ -18,8 +18,8 @@ exports.creds = {
   responseMode: 'form_post',
 
   // Required, the reply URL registered in AAD for your app
-  //redirectUrl: 'https://dpdlcpuxv3.azurewebsites.net/auth/openid/return',
-  redirectUrl: 'http://localhost:3000/auth/openid/return',
+  redirectUrl: 'https://dpdlcpuxv3.azurewebsites.net/auth/openid/return',
+  //redirectUrl: 'http://localhost:3000/auth/openid/return',
 
   // Required if we use http for redirectUrl
   allowHttpForRedirectUrl: true,
