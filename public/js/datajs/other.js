@@ -413,6 +413,10 @@ $(document).ready(function () {
 
     }
 
+    addApi = () => {
+        alert("We are working on it and we will update you! :)")
+    }
+
 
 
 });
