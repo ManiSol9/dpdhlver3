@@ -75,7 +75,7 @@ $(document).ready(function () {
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "https://dive11.azurewebsites.net/api/beta/entity/getEntityMetadataByEntityID?entityID="+id,
+            "url": "https://dive11.azurewebsites.net/api/beta/entity/getEntityMetadataByEntityID?entityID=" + id,
             "method": "GET",
             "headers": {
                 "content-type": "application/json",
@@ -102,7 +102,7 @@ $(document).ready(function () {
         var txt = '<select  id="bid" class="form-control form-control-line" onchange="updateApps()"><option value="">Please select Group</option>';
         myObj = data;
         for (x in myObj) {
-            txt += '<option value="' + myObj[x].id + ','+ myObj[x].entity_name +'">' + myObj[x].entity_name + '</option>';
+            txt += '<option value="' + myObj[x].id + ',' + myObj[x].entity_name + '">' + myObj[x].entity_name + '</option>';
         }
         txt += "</select>";
         document.getElementById("bu").innerHTML = txt;
@@ -116,7 +116,7 @@ $(document).ready(function () {
 
             let entityObj = myObj[x].entity_object
 
-            txt += '<option value="' + myObj[x].id + ','+ entityObj.Name +'">' + entityObj.Name + '</option>';
+            txt += '<option value="' + myObj[x].id + ',' + entityObj.Name + '">' + entityObj.Name + '</option>';
         }
         txt += "</select>";
         document.getElementById("apps").innerHTML = txt;
@@ -178,8 +178,8 @@ $(document).ready(function () {
             $.ajax(settings).done(function (response) {
                 console.log(response, "entity");
 
-                if(response.status == 200){
-                    
+                if (response.status == 200) {
+
                     alert("Added entity");
                     document.location.reload(true);
 
@@ -212,7 +212,7 @@ $(document).ready(function () {
             let bdata = document.getElementById("bid").value
 
             let bvalue = bdata.split(",")
-    
+
 
             let Obj = {
                 "entityName": name,
@@ -228,7 +228,7 @@ $(document).ready(function () {
 
             console.log(JSON.stringify(Obj))
 
-            
+
 
             var settings = {
                 "async": true,
@@ -247,15 +247,15 @@ $(document).ready(function () {
             $.ajax(settings).done(function (response) {
                 console.log(response, "app");
 
-                if(response.status == 200){
-                    
+                if (response.status == 200) {
+
                     alert("Added entity");
                     document.location.reload(true);
 
                 } else {
                     alert("Somthing went wrong! Please try again later")
                 }
-                
+
             });
 
         } else {
@@ -309,13 +309,13 @@ $(document).ready(function () {
     Upload = () => {
         //Reference the FileUpload element.
         var fileUpload = document.getElementById("uploadExcel");
- 
+
         //Validate whether File is valid Excel file.
         var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.xls|.xlsx)$/;
         if (regex.test(fileUpload.value.toLowerCase())) {
             if (typeof (FileReader) != "undefined") {
                 var reader = new FileReader();
- 
+
                 //For Browsers other than IE.
                 if (reader.readAsBinaryString) {
                     reader.onload = function (e) {
@@ -346,13 +346,13 @@ $(document).ready(function () {
         var workbook = XLSX.read(data, {
             type: 'binary'
         });
- 
+
         //Fetch the name of First Sheet.
         var firstSheet = workbook.SheetNames[0];
- 
+
         //Read all rows from First Sheet into an JSON array.
         var excelRows = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[firstSheet]);
- 
+
         excelData = excelRows
 
     };
@@ -379,7 +379,7 @@ $(document).ready(function () {
         $.ajax(settings).done(function (response) {
             console.log(response);
 
-            if(response.status == 200){
+            if (response.status == 200) {
 
                 generateTable(response.result)
 
@@ -400,7 +400,7 @@ $(document).ready(function () {
         for (x in myObj) {
             txt += "<tr><td>" + myObj[x].entity_name + "</td><td>" + myObj[x].parentname + "</td><td>" + myObj[x].created_date + "</td><td>" + myObj[x].created_by + "</td>";
             //txt += "<td><button class='btn btn-danger' onclick='edit()'>Associate ?</button>&nbsp;&nbsp;</td>";            
-            txt += "<td><button class='btn btn-success'><a style='color: white' href='/entitychildren.html?id="+ myObj[x].id +"'>View Data</a></button>&nbsp;&nbsp;</td>";
+            txt += "<td><button class='btn btn-success'><a style='color: white' href='/entitychildren.html?id=" + myObj[x].id + "'>View Data</a></button>&nbsp;&nbsp;</td>";
             txt += "<td></td></tr>";
         }
         txt += "</table>"
@@ -418,6 +418,35 @@ $(document).ready(function () {
     }
 
 
+    download = () => {
+
+        
+        var download = document.getElementById("download").value
+
+        //alert(download)
+
+        if(download == 1){
+
+            $("a#downloadhref").attr("href", "/xls/Business Units.xlsx")
+
+
+        } else if(download == 2){
+
+            $("a#downloadhref").attr("href", "/xls/Applications.xlsx")
+
+
+        } else if(download == 3){
+
+            $("a#downloadhref").attr("href", "/xls/Devices.xlsx")
+
+
+        } else {
+
+            $("a#downloadhref").attr("href", "/xls/Customize.xlsx")
+
+        }
+
+    }
 
 });
 

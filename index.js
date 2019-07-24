@@ -222,6 +222,7 @@ function checkAuthenticatedOnLogin(req,res,next){
 }
 
 app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/xls'));
 // app.use('/', ensureAuthenticated, function(req, res) {
 
 //     console.log(req)
