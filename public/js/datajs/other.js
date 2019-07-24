@@ -440,6 +440,21 @@ $(document).ready(function () {
             $("a#downloadhref").attr("href", "/xls/Devices.xlsx")
 
 
+        }  else if(download == 5){
+
+            $("a#downloadhref").attr("href", "/xls/Facilities.xlsx")
+
+
+        } else if(download == 6){
+
+            $("a#downloadhref").attr("href", "/xls/Assets.xlsx")
+
+
+        } else if(download == 7){
+
+            $("a#downloadhref").attr("href", "/xls/Shipments.xlsx")
+
+
         } else {
 
             $("a#downloadhref").attr("href", "/xls/Customize.xlsx")
