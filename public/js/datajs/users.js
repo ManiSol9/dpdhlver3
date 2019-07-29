@@ -244,7 +244,11 @@ $(document).ready(function () {
 
         let bvalue = bdata.split(",")
 
-        document.getElementById("appdiv").style.display = "block"
+        $("#bid").prop('disabled', 'disabled');
+
+        document.getElementById("appdiv").style.display = "none"
+
+        document.getElementById("buttonpart1").style.display = "block"
 
         document.getElementById("apps").innerHTML = '<div class="icon-container" id="iconcontainer"><i class="loader"></i></div>'
 
@@ -252,6 +256,13 @@ $(document).ready(function () {
 
     }
 
+    nextAdd = () => {
+
+        document.getElementById("buttonpart3").style.display = "block"
+        document.getElementById("buttonpart1").style.display = "none"
+        document.getElementById("appdiv").style.display = "block"
+
+    }
 
 
     function generateTable() {
@@ -705,7 +716,7 @@ $(document).ready(function () {
     }
 
 
-    $('#finalSave').on('click', function (e) {
+    $('#finalsave').on('click', function (e) {
 
         //console.log(useremail.value, username.value)
 
@@ -733,6 +744,79 @@ $(document).ready(function () {
                 "parentEntityID": childInfo[0],
                 "parentEntityType": bvalue[1],
                 "parentEntityName": childInfo[1],
+                "parentEntityCategory": "Instance",
+                "userGroups": groupsData
+            }
+
+            console.log(finalData)
+
+            
+
+            let headers = {
+                "Content-Type": "application/json"
+            }
+
+            var settings = {
+                "async": true,
+                "crossDomain": true,
+                "url": "https://dive11.azurewebsites.net/api/beta/users/createUsersWithUserGroupsForDemo",
+                "method": "POST",
+                "processData": false,
+                "headers": headers,
+                "data": JSON.stringify(finalData)
+            }
+
+            $.ajax(settings).done(function (response) {
+
+                console.log(response)
+
+                if(response.status == 200){
+
+                    alert("Updated Successfully")
+
+                } else {
+
+                    alert("Something went wrong! please try again later")
+                }
+
+                document.location.reload(true);
+
+
+            });
+
+            
+
+        }
+    });
+
+    $('#finalsave1').on('click', function (e) {
+
+        //console.log(useremail.value, username.value)
+
+        e.preventDefault();
+
+        gid = document.getElementById("gId").value
+
+        if (bid.value == "") {
+            alert("Please fill required fields")
+        } else {
+
+            e.preventDefault();
+
+            //let childInfo = document.getElementById("appId").value
+
+            //childInfo = childInfo.split(",")
+
+            let bdata = document.getElementById("bid").value
+
+            let bvalue = bdata.split(",")
+
+
+
+            let finalData = {
+                "parentEntityID": bvalue[0],
+                "parentEntityType": bvalue[1],
+                "parentEntityName": bvalue[1],
                 "parentEntityCategory": "Instance",
                 "userGroups": groupsData
             }

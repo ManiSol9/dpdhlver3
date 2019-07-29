@@ -129,11 +129,23 @@ $(document).ready(function () {
 
         let bvalue = bdata.split(",")
 
-        document.getElementById("appdiv").style.display = "block"
+        $("#bid").prop('disabled', 'disabled');
+
+        document.getElementById("buttonpart1").style.display = "block"
+
+        document.getElementById("appdiv").style.display = "none"
 
         document.getElementById("apps").innerHTML = '<div class="icon-container" id="iconcontainer"><i class="loader"></i></div>'
 
         fecthApps(bvalue[0], bvalue[1])
+
+    }
+
+    nextAdd = () => {
+
+        document.getElementById("buttonpart3").style.display = "block"
+        document.getElementById("buttonpart1").style.display = "none"
+        document.getElementById("appdiv").style.display = "block"
 
     }
 
@@ -150,14 +162,27 @@ $(document).ready(function () {
         if (name != "") {
 
 
-            let Obj = {
+            /*let Obj = {
                 "entityName": name,
                 "parentID": null,
                 "parentType": null,
                 "createdBy": "mani",
                 "entityMetadata": excelData,
                 "parentInfo": "Entity"
+            }*/
+
+            let Obj = {
+                "entityName": name,
+                "parentID": null,
+                "parentType": null,
+                "parentName": null,
+                "parentTypeID": null,
+                "parentTypeName": null,
+                "createdBy": "mani",
+                "entityMetadata": excelData,
+                "parentInfo": "Entity"
             }
+
 
             console.log(Obj)
 
@@ -197,6 +222,73 @@ $(document).ready(function () {
 
     });
 
+
+    $('#saveenity2').on('click', function (e) {
+
+        let name = document.getElementById("name").value;
+
+        if (name != "") {
+
+            //let childInfo = document.getElementById("appId").value
+
+            //childInfo = childInfo.split(",")
+
+            let bdata = document.getElementById("bid").value
+
+            let bvalue = bdata.split(",")
+
+            let Obj = {
+                "entityName": name,
+                "parentID": bvalue[0],
+                "parentType": bvalue[1],
+                "parentName": bvalue[1],
+                "parentTypeID": bvalue[0],
+                "parentTypeName": bvalue[1],
+                "createdBy": "mani",
+                "entityMetadata": excelData,
+                "parentInfo": "Instance"
+            }
+
+
+            console.log(Obj)
+
+            
+
+            var settings = {
+                "async": true,
+                "crossDomain": true,
+                "url": "https://dive11.azurewebsites.net/api/beta/entity/createEntity",
+                "method": "POST",
+                "processData": false,
+                "headers": {
+                    "content-type": "application/json",
+                    "cache-control": "no-cache",
+                    "postman-token": "0146efcb-e86f-0ff0-d4ea-d8647cbbfd33"
+                },
+                "data": JSON.stringify(Obj)
+            }
+
+            $.ajax(settings).done(function (response) {
+                console.log(response, "entity");
+
+                if (response.status == 200) {
+
+                    alert("Added entity");
+                    document.location.reload(true);
+
+                } else {
+                    alert("Somthing went wrong! Please try again later")
+                }
+
+            }); 
+
+        } else {
+
+            alert("Entity name should be there")
+
+        }
+
+    });
 
 
     $('#saveenity1').on('click', function (e) {
@@ -398,10 +490,16 @@ $(document).ready(function () {
         myObj = data;
         txt += "<table class='table'><tr><th> Entity Name </th><th> Parent Name </th><th> Created Date </th> <th> Created By  </th><th>Actions</th></tr>"
         for (x in myObj) {
-            txt += "<tr><td>" + myObj[x].entity_name + "</td><td>" + myObj[x].parentname + "</td><td>" + myObj[x].created_date + "</td><td>" + myObj[x].created_by + "</td>";
-            //txt += "<td><button class='btn btn-danger' onclick='edit()'>Associate ?</button>&nbsp;&nbsp;</td>";            
-            txt += "<td><button class='btn btn-success'><a style='color: white' href='/entitychildren.html?id=" + myObj[x].id + "'>View Data</a></button>&nbsp;&nbsp;</td>";
-            txt += "<td></td></tr>";
+
+            if(myObj[x].is_exists != false) {
+
+                txt += "<tr><td>" + myObj[x].entity_name + "</td><td>" + myObj[x].parentname + "</td><td>" + myObj[x].created_date + "</td><td>" + myObj[x].created_by + "</td>";
+                txt += "<td><button class='btn btn-success'><a style='color: white' href='/entitychildren.html?id=" + myObj[x].id + "'>View Data</a></button>&nbsp;&nbsp;";
+                txt += "<button class='btn btn-danger' onclick='deleteFun(" + myObj[x].id + ", \""+ myObj[x].entity_name +"\")'>DELETE</button>&nbsp;&nbsp;</td>";            
+                txt += "</tr>";
+
+            }
+
         }
         txt += "</table>"
         document.getElementById("demo").innerHTML = txt;
@@ -415,6 +513,42 @@ $(document).ready(function () {
 
     addApi = () => {
         alert("We are working on it and we will update you! :)")
+    }
+
+    deleteFun = (x, y) => {
+
+        console.log(x, y)
+
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "https://dive11.azurewebsites.net/api/beta/entity/deleteEntityForDemo",
+            "method": "POST",
+            "headers": {
+                "content-type": "application/json",
+                "cache-control": "no-cache",
+                "postman-token": "0146efcb-e86f-0ff0-d4ea-d8647cbbfd33"
+            },
+            "processData": false,
+            "data": JSON.stringify({
+                "entityID": x,
+                "entityName": y
+            })
+        }
+    
+        $.ajax(settings).done(function (response) {
+            console.log(response, "deviceadd");
+
+            if(response.status == 200){
+                alert("Deleted Successfully");
+
+                document.getElementById("demo").innerHTML = '<div class="loading"><i class="fa fa-spin fa-cog"></i></div>';
+
+                fecthEntities();
+                //$("#entity").modal('hide');	
+            }
+        });
+
     }
 
 

@@ -111,7 +111,7 @@
                     </li>-->
                     <li>
                         <a title="Please use Entities"><i class="fa fa-print fa-fw" aria-hidden="true"></i>Devices</a>
-                    </li> 
+                    </li>
                     <li>
                         <a href="users.html" class="waves-effect"><i class="fa fa-user fa-fw"
                                 aria-hidden="true"></i>Users</a>
@@ -241,7 +241,9 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <label for="example-email" class="col-md-12" style="color: red; padding-bottom: 15px;">*** You can download Sample Template from Right Panel</label>
+                                        <label for="example-email" class="col-md-12"
+                                            style="color: red; padding-bottom: 15px;">*** You can download Sample
+                                            Template from Right Panel</label>
 
                                         <div id='my_file_output'></div>
 
@@ -286,8 +288,17 @@
                                                     </select>
                                                 </div>
                                             </div>
-
-                                            <div class="form-group col-md-12">
+                                            <div class="form-group col-md-12" id="buttonpart1" style="display: none">
+                                                <button id="saveenity2"
+                                                    class="btn btn-success pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">
+                                                    + Save Entity</button>
+                                                <label
+                                                    class="or pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">(OR)</label>
+                                                <button onclick="nextAdd()"
+                                                    class="btn btn-success pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">
+                                                    + Add Child as Parent</button>
+                                            </div>
+                                            <div class="form-group col-md-12" id="buttonpart3" style="display: none">
                                                 <div class="col-sm-12" style="text-align: right">
                                                     <button id="saveenity1" class="btn btn-success">+ Add
                                                         Entity</button>
@@ -297,26 +308,30 @@
 
                                     </div>
                                 </div>
-                                
+
                                 <div class="col-md-4">
                                     <div class="rightblock">
                                         <div class="form-group col-md-12">
-                                            <label for="example-email" class="col-md-12">Download Sample Template</label>
+                                            <label for="example-email" class="col-md-12">Download Sample
+                                                Template</label>
                                             <div class="col-md-12">
-                                                <select id="download" onchange="download()" class="form-control form-control-line">
+                                                <select id="download" onchange="download()"
+                                                    class="form-control form-control-line">
                                                     <option value="1">BU Onboarding Template</option>
                                                     <option value="2">Application Onboarding Template</option>
                                                     <option value="3">Device Onboarding Template</option>
                                                     <option value="5">Facilities Onboarding Template</option>
                                                     <option value="6">Assets Onboarding Template</option>
                                                     <option value="7">Shipments Onboarding Template</option>
-                                                    <option value="4" selected>Customize Entity Onboarding Template</option>
+                                                    <option value="4" selected>Customize Entity Onboarding Template
+                                                    </option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="form-group col-md-12">
                                             <div class="col-sm-12" style="text-align: right">
-                                                <a id="downloadhref" class="btn btn-success" href="/xls/Customize.xlsx" download> Download </a>
+                                                <a id="downloadhref" class="btn btn-success" href="/xls/Customize.xlsx"
+                                                    download> Download </a>
                                             </div>
                                         </div>
 

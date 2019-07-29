@@ -42,45 +42,55 @@ $(document).ready(function () {
 
         let entityObj = []
 
-        for(x in data){
+        if(data.length != 0) {
 
-            entityObj.push(result[x].entity_object)
+            for(x in data){
 
-        }
-
-        myObj = entityObj;
-
-        var keys = Object.keys(myObj[0]);
-
-        txt += "<table class='table'><tr>"
-
-
-        for(x in keys){
-
-            txt +='<th>'+ keys[x] +'</th>';
-
-        }
-
-        txt += "<th>Actions</th></tr>"
-
-
-        for(i=0;i<data.length;i++) {
-
-            txt +='<tr>';
-
-            keys = Object.keys(myObj[0]);
-
-
-            for(y in keys){
-
-                txt +='<td>'+ myObj[i][keys[y]] +'</td>';
-
+                entityObj.push(data[x].entity_object)
+    
             }
+    
+            myObj = entityObj;
+    
+            var keys = Object.keys(myObj[0]);
+    
+            txt += "<table class='table'><tr>"
+    
+    
+            for(x in keys){
+    
+                txt +='<th>'+ keys[x] +'</th>';
+    
+            }
+    
+            txt += "<th>Actions</th></tr>"
+    
+    
+            for(i=0;i<data.length;i++) {
+    
+                txt +='<tr>';
+    
+                keys = Object.keys(myObj[0]);
+    
+    
+                for(y in keys){
+    
+                    txt +='<td>'+ myObj[i][keys[y]] +'</td>';
+    
+                }
+    
+                txt +="<td><button class='btn btn-danger'><i class='fa fa-trash-o fa-fw' onclick='deletebu(" + data[i].entity_id + ")'  aria-hidden='true'></i></button></td></tr>";
+    
+            }
+            txt += "</table>";
+    
 
-            txt +="<td><button class='btn btn-danger'><i class='fa fa-trash-o fa-fw' onclick='deletebu(" + data[i].entity_id + ")'  aria-hidden='true'></i></button></td></tr>";
+        } else {
+
+            txt +="<div class='col-md-12' style='display: flex;justify-content: center;font-weight: bold;'> No Data </div>";
 
         }
-        txt += "</table>"
+
         document.getElementById("demo").innerHTML = txt;
     }
 

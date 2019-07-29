@@ -47,17 +47,18 @@
                     <a class="logo" href="dashboard.html">
                         <b>
                             <!--This is dark logo icon--><img src="images/dhl_logo.png" alt="home" class="dark-logo" />
-                            <!--This is light logo icon--><img src="images/dhl_logo.png" alt="home" class="light-logo" />
+                            <!--This is light logo icon--><img src="images/dhl_logo.png" alt="home"
+                                class="light-logo" />
                         </b>
                     </a>
                 </div>
                 <ul class="nav navbar-top-links navbar-right pull-right">
                     <li>
-                        <a class="profile-pic dropdown-toggle" data-toggle="dropdown"> <img src="images/mani.jpg" alt="user-img"
-                                width="36" class="img-circle">
-        
-                            <b class="hidden-xs"> 
-                                    Admin <span class="caret"></span>
+                        <a class="profile-pic dropdown-toggle" data-toggle="dropdown"> <img src="images/mani.jpg"
+                                alt="user-img" width="36" class="img-circle">
+
+                            <b class="hidden-xs">
+                                Admin <span class="caret"></span>
                             </b></a>
                         <ul class="dropdown-menu">
                             <li><a href="/profile.html">Profile</a></li>
@@ -92,9 +93,10 @@
                     </li> -->
                     <li>
                         <a title="Please use Entities"><i class="fa fa-print fa-fw" aria-hidden="true"></i>Devices</a>
-                    </li> 
+                    </li>
                     <li>
-                        <a href="users.html" class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"></i>Users</a>
+                        <a href="users.html" class="waves-effect"><i class="fa fa-user fa-fw"
+                                aria-hidden="true"></i>Users</a>
                     </li>
                     <!--
                     <li>
@@ -112,16 +114,18 @@
                         <a href="others.html" class="waves-effect"><i class="fa fa-home fa-fw"
                                 aria-hidden="true"></i>Entites</a>
                     </li>
-        
+
                     <li>
-                        <a href="reports.html" class="waves-effect"><i class="fa fa-signal fa-fw" aria-hidden="true"></i>Reports</a>
+                        <a href="reports.html" class="waves-effect"><i class="fa fa-signal fa-fw"
+                                aria-hidden="true"></i>Reports</a>
                     </li>
                     <li>
-                        <a href="logs.html" class="waves-effect"><i class="fa fa-sliders fa-fw" aria-hidden="true"></i>Logs</a>
+                        <a href="logs.html" class="waves-effect"><i class="fa fa-sliders fa-fw"
+                                aria-hidden="true"></i>Logs</a>
                     </li>
                 </ul>
             </div>
-        
+
         </div>
 
         <div id="page-wrapper">
@@ -131,13 +135,13 @@
                         <h4 class="page-title">On Boarded User Groups and Users</h4>
                     </div>
                     <div class="col-lg-7 col-sm-8 col-md-8 col-xs-12">
-                            <a id="addDevice" onclick="onBoardDevice('A')"
-                                class="btn btn-danger pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">
-                                Add User </a>
+                        <a id="addDevice" onclick="onBoardDevice('A')"
+                            class="btn btn-danger pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">
+                            Add User </a>
 
-                            <a id="goBack" style="display: none" onclick="onBoardDevice('B')"
-                                class="btn btn-danger pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">
-                                Go Back </a>
+                        <a id="goBack" style="display: none" onclick="onBoardDevice('B')"
+                            class="btn btn-danger pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">
+                            Go Back </a>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
@@ -246,7 +250,7 @@
 
                                     <div class="col-md-12 body-part-3" id="addapppart" style="display: none">
                                         <div class="col-md-12">
-                                            <form class="form-horizontal form-material">
+                                            <div class="form-horizontal form-material">
                                                 <div class="form-group">
                                                     <label class="col-sm-12">Select Parent</label>
                                                     <div class="col-sm-12" id="bu">
@@ -257,13 +261,28 @@
                                                     <div class="col-sm-12" id="apps">
                                                     </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <div class="col-sm-12" style="text-align: right;">
-                                                        <button id="finalSave" class="btn btn-success">Submit &
+
+
+                                                <div class="form-group col-md-12" id="buttonpart1"
+                                                    style="display: none">
+                                                    <button id="finalsave1"
+                                                        class="btn btn-success pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">
+                                                        Submit & Save</button>
+                                                    <label
+                                                        class="or pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">(OR)</label>
+                                                    <button onclick="nextAdd()"
+                                                        class="btn btn-success pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">
+                                                        + Select Child</button>
+                                                </div>
+                                                <div class="form-group col-md-12" id="buttonpart3"
+                                                    style="display: none">
+                                                    <div class="col-sm-12" style="text-align: right">
+                                                        <button id="finalsave" class="btn btn-success"> Submit &
                                                             Save</button>
                                                     </div>
                                                 </div>
-                                            </form>
+
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
