@@ -102,7 +102,9 @@ $(document).ready(function () {
         var txt = '<select  id="bid" class="form-control form-control-line" onchange="updateApps()"><option value="">Please select Group</option>';
         myObj = data;
         for (x in myObj) {
-            txt += '<option value="' + myObj[x].id + ',' + myObj[x].entity_name + '">' + myObj[x].entity_name + '</option>';
+            if(myObj[x].is_exists != false) {
+                txt += '<option value="' + myObj[x].id + ',' + myObj[x].entity_name + '">' + myObj[x].entity_name + '</option>';
+            }
         }
         txt += "</select>";
         document.getElementById("bu").innerHTML = txt;
