@@ -39,7 +39,7 @@ $(document).ready(function () {
 
     }
 
-    fetchBU();
+    //fetchBU();
 
     function fetchBU() {
 
@@ -455,6 +455,7 @@ $(document).ready(function () {
 
         document.getElementById("demo").style.display = "none";
         document.getElementById("demo1").style.display = "block";
+        fetchBU();
 
     }
 
